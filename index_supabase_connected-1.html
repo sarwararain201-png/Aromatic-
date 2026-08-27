@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aromatic Memories</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:linear-gradient(135deg,#ffe0ec,#d9efff,#eadcff);color:#30243a}
+.wrap{max-width:720px;margin:auto;padding:18px 15px 35px}
+.hero{text-align:center;padding:25px 8px 20px}
+h1{font-size:38px;line-height:1.15;margin:0 0 8px}
+.tag{font-size:17px;color:#6d5a78;margin:0}
+.card{background:rgba(255,255,255,.88);border-radius:24px;padding:18px;margin:15px 0;box-shadow:0 8px 25px rgba(80,50,100,.12)}
+.section-title{font-size:22px;margin:0 0 6px}
+.muted{color:#76687f;margin:6px 0}
+.song{display:flex;align-items:center;gap:14px}
+.cover{width:62px;height:62px;min-width:62px;border-radius:18px;background:linear-gradient(135deg,#ff7eae,#8dbbff);display:grid;place-items:center;font-size:28px}
+.song h2{font-size:18px;margin:0 0 5px}
+.artist{font-size:13px;color:#796b82}
+.actions{display:flex;gap:9px;margin-top:15px;flex-wrap:wrap}
+button{border:0;border-radius:999px;padding:10px 15px;color:white;font-weight:700;font-size:14px;cursor:pointer}
+.like{background:#7868e6}.comment{background:#48a4df}.post{background:#ff659b}
+input,textarea{width:100%;border:1px solid #d9ccdf;border-radius:14px;padding:12px;margin:7px 0;font-size:16px;background:#fff}
+#commentsList{margin-top:15px}
+.comment-item{padding:12px;border-radius:15px;background:#f8f3fa;margin:8px 0}
+.comment-name{font-weight:700}.comment-text{margin-top:5px;white-space:pre-wrap}
+.status{font-size:14px;margin-top:8px}
+footer{text-align:center;color:#76687f;margin-top:25px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<section class="hero"><h1>🌸 Aromatic Memories</h1><p class="tag">My Music • My Mood • My Memories</p></section>
+<div class="card"><h2 class="section-title">🎵 My Favorite Songs</h2><p class="muted">My favorite songs, memories and feelings.</p></div>
+
+<div class="card"><div class="song"><div class="cover">🎶</div><div><h2>Jab Hum Jawan Hongy</h2><div class="artist">Aromatic Memories</div></div></div><div class="actions"><button class="like">❤️ Like</button><button class="comment" onclick="document.getElementById('commentBox').scrollIntoView({behavior:'smooth'})">💬 Comment</button></div></div>
+
+<div class="card"><div class="song"><div class="cover">🎶</div><div><h2>Bichhran Bhi Zaroori Tha</h2><div class="artist">Aromatic Memories</div></div></div><div class="actions"><button class="like">❤️ Like</button><button class="comment" onclick="document.getElementById('commentBox').scrollIntoView({behavior:'smooth'})">💬 Comment</button></div></div>
+
+<div class="card"><div class="song"><div class="cover">🎶</div><div><h2>Chal Kahen Chalen Sajna</h2><div class="artist">Pyar Yahan Karna Hai Mana</div></div></div><div class="actions"><button class="like">❤️ Like</button><button class="comment" onclick="document.getElementById('commentBox').scrollIntoView({behavior:'smooth'})">💬 Comment</button></div></div>
+
+<div class="card" id="commentBox">
+<h2 class="section-title">💬 Leave a Comment</h2>
+<input id="name" placeholder="Your name" autocomplete="name">
+<textarea id="comment" rows="3" placeholder="Write something..."></textarea>
+<button class="post" id="postBtn">Post Comment</button>
+<p id="status" class="status muted"></p>
+<div id="commentsList"></div>
+</div>
+<footer>Made with ❤️ for Aromatic Memories</footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+const SUPABASE_URL = "https://napgkwuhifefpnxwknqc.supabase.co";
+const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_rgYS1XVqzo1tC9nbzIUJtA_uBcnK9b2";
+const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
+
+const nameInput = document.getElementById('name');
+const commentInput = document.getElementById('comment');
+const postBtn = document.getElementById('postBtn');
+const statusEl = document.getElementById('status');
+const commentsList = document.getElementById('commentsList');
+
+function showStatus(message, ok=false) {
+  statusEl.textContent = message;
+  statusEl.style.color = ok ? '#2e8b57' : '#c0392b';
+}
+
+function renderComments(rows) {
+  commentsList.innerHTML = '';
+  if (!rows || rows.length === 0) {
+    commentsList.innerHTML = '<p class="muted">No comments yet. Be the first ❤️</p>';
+    return;
+  }
+  rows.forEach(row => {
+    const item = document.createElement('div');
+    item.className = 'comment-item';
+    const who = document.createElement('div');
+    who.className = 'comment-name';
+    who.textContent = row.Name || 'Anonymous';
+    const text = document.createElement('div');
+    text.className = 'comment-text';
+    text.textContent = row.Comment || '';
+    item.appendChild(who);
+    item.appendChild(text);
+    commentsList.appendChild(item);
+  });
+}
+
+async function loadComments() {
+  const { data, error } = await supabaseClient
+    .from('Aromatic')
+    .select('created_at, Name, Comment')
+    .order('created_at', { ascending: false });
+
+  if (error) {
+    showStatus('Comments load nahi ho rahe: ' + error.message);
+    return;
+  }
+  renderComments(data);
+}
+
+postBtn.addEventListener('click', async () => {
+  const name = nameInput.value.trim();
+  const comment = commentInput.value.trim();
+
+  if (!name || !comment) {
+    showStatus('Name aur comment dono likhein.');
+    return;
+  }
+
+  postBtn.disabled = true;
+  showStatus('Comment post ho raha hai...', true);
+
+  const { error } = await supabaseClient
+    .from('Aromatic')
+    .insert([{ Name: name, Comment: comment }]);
+
+  postBtn.disabled = false;
+
+  if (error) {
+    showStatus('Comment post nahi hua: ' + error.message);
+    return;
+  }
+
+  nameInput.value = '';
+  commentInput.value = '';
+  showStatus('Comment successfully post ho gaya ❤️', true);
+  await loadComments();
+});
+
+loadComments();
+</script>
+</body>
+</html>
