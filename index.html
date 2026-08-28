@@ -132,7 +132,8 @@ postBtn.addEventListener('click', async () => {
   await loadComments();
 });
 
-loadComments(); async function loadLikes() {
+loadComments(); 
+  async function loadLikes() {
   const { data, error } = await supabaseClient
     .from('likes')
     .select('song');
