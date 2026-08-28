@@ -20,7 +20,8 @@ h1{font-size:38px;line-height:1.15;margin:0 0 8px}
 .artist{font-size:13px;color:#796b82}
 .actions{display:flex;gap:9px;margin-top:15px;flex-wrap:wrap}
 button{border:0;border-radius:999px;padding:10px 15px;color:white;font-weight:700;font-size:14px;cursor:pointer}
-.like{background:#7868e6}.comment{background:#48a4df}.post{background:#ff659b}
+.like{background:#7868e6}.comment{background:#48a4df}.post{background:#ff659b}.like-count{margin-left:4px}
+.like.liked{transform:scale(1.05)}
 input,textarea{width:100%;border:1px solid #d9ccdf;border-radius:14px;padding:12px;margin:7px 0;font-size:16px;background:#fff}
 #commentsList{margin-top:15px}
 .comment-item{padding:12px;border-radius:15px;background:#f8f3fa;margin:8px 0}
@@ -34,11 +35,11 @@ footer{text-align:center;color:#76687f;margin-top:25px}
 <section class="hero"><h1>🌸 Aromatic Memories</h1><p class="tag">My Music • My Mood • My Memories</p></section>
 <div class="card"><h2 class="section-title">🎵 My Favorite Songs</h2><p class="muted">My favorite songs, memories and feelings.</p></div>
 
-<div class="card"><div class="song"><div class="cover">🎶</div><div><h2>Jab Hum Jawan Hongy</h2><div class="artist">Aromatic Memories</div></div></div><div class="actions"><button class="like">❤️ Like</button><button class="comment" onclick="document.getElementById('commentBox').scrollIntoView({behavior:'smooth'})">💬 Comment</button></div></div>
+<div class="card"><div class="song"><div class="cover">🎶</div><div><h2>Jab Hum Jawan Hongy</h2><div class="artist">Aromatic Memories</div></div></div><div class="actions"><button class="like" data-song="Jab Hum Jawan Hongy">❤️ Like <span class="like-count">0</span></button> <button class="comment" onclick="document.getElementById('commentBox').scrollIntoView({behavior:'smooth'})">💬 Comment</button></div></div>
 
-<div class="card"><div class="song"><div class="cover">🎶</div><div><h2>Bichhran Bhi Zaroori Tha</h2><div class="artist">Aromatic Memories</div></div></div><div class="actions"><button class="like">❤️ Like</button><button class="comment" onclick="document.getElementById('commentBox').scrollIntoView({behavior:'smooth'})">💬 Comment</button></div></div>
+<div class="card"><div class="song"><div class="cover">🎶</div><div><h2>Bichhran Bhi Zaroori Tha</h2><div class="artist">Aromatic Memories</div></div></div><div class="actions"><button class="like" data-song="Bichhran Bhi Zaroori Tha">❤️ Like <span class="like-count">0</span></button> <button class="comment" onclick="document.getElementById('commentBox').scrollIntoView({behavior:'smooth'})">💬 Comment</button></div></div>
 
-<div class="card"><div class="song"><div class="cover">🎶</div><div><h2>Chal Kahen Chalen Sajna</h2><div class="artist">Pyar Yahan Karna Hai Mana</div></div></div><div class="actions"><button class="like">❤️ Like</button><button class="comment" onclick="document.getElementById('commentBox').scrollIntoView({behavior:'smooth'})">💬 Comment</button></div></div>
+<div class="card"><div class="song"><div class="cover">🎶</div><div><h2>Chal Kahen Chalen Sajna</h2><div class="artist">Pyar Yahan Karna Hai Mana</div></div></div><div class="actions"><button class="like" data-song="Chal Kahen Chalen Sajna">❤️ Like <span class="like-count">0</span></button> <button class="comment" onclick="document.getElementById('commentBox').scrollIntoView({behavior:'smooth'})">💬 Comment</button></div></div>
 
 <div class="card" id="commentBox">
 <h2 class="section-title">💬 Leave a Comment</h2>
@@ -131,7 +132,46 @@ postBtn.addEventListener('click', async () => {
   await loadComments();
 });
 
-loadComments();
+loadComments(); async function loadLikes() {
+  const { data, error } = await supabaseClient
+    .from('likes')
+    .select('song');
+
+  if (error) {
+    console.log('Likes load error:', error);
+    return;
+  }
+
+  document.querySelectorAll('.like').forEach(button => {
+    const song = button.dataset.song;
+    const count = data.filter(row => row.song === song).length;
+    button.querySelector('.like-count').textContent = count;
+  });
+}
+
+document.querySelectorAll('.like').forEach(button => {
+  button.addEventListener('click', async () => {
+    const song = button.dataset.song;
+
+    button.disabled = true;
+
+    const { error } = await supabaseClient
+      .from('likes')
+      .insert([{ song: song }]);
+
+    button.disabled = false;
+
+    if (error) {
+      console.log('Like error:', error);
+      return;
+    }
+
+    button.classList.add('liked');
+    await loadLikes();
+  });
+});
+
+loadLikes();
 </script>
 </body>
 </html>
