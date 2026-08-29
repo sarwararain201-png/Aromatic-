@@ -72,41 +72,7 @@ const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_rgYS1XVqzo1tC9nbzIUJtA_uBcnK9b2
 const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
 
 const nameInput = document.getElementById('name');
-const commentInput = document.getElementById('comment');const ownerEmail = document.getElementById('ownerEmail');
-const ownerPassword = document.getElementById('ownerPassword');
-const loginBtn = document.getElementById('loginBtn');
-const logoutBtn = document.getElementById('logoutBtn');
-const loginStatus = document.getElementById('loginStatus');
-
-loginBtn.addEventListener('click', async () => {
-  const { error } = await supabaseClient.auth.signInWithPassword({
-    email: ownerEmail.value.trim(),
-    password: ownerPassword.value
-  });
-
-  if (error) {
-    loginStatus.textContent = 'Login failed: ' + error.message;
-    return;
-  }
-
-  loginStatus.textContent = 'Owner login successful ❤️';
-  ownerEmail.style.display = 'none';
-  ownerPassword.style.display = 'none';
-  loginBtn.style.display = 'none';
-  logoutBtn.style.display = 'inline-block';
-
-  await loadComments();
-});
-
-logoutBtn.addEventListener('click', async () => {
-  await supabaseClient.auth.signOut();
-
-  ownerEmail.style.display = 'block';
-  ownerPassword.style.display = 'block';
-  loginBtn.style.display = 'inline-block';
-  logoutBtn.style.display = 'none';
-  loginStatus.textContent = 'Logged out.';
-});
+const commentInput = document.getElementById('comment');
 const postBtn = document.getElementById('postBtn');
 const statusEl = document.getElementById('status');
 const commentsList = document.getElementById('commentsList');
@@ -116,7 +82,7 @@ function showStatus(message, ok=false) {
   statusEl.style.color = ok ? '#2e8b57' : '#c0392b';
 }
 
-async function renderComments(rows) {
+function renderComments(rows) {
   commentsList.innerHTML = '';
   if (!rows || rows.length === 0) {
     commentsList.innerHTML = '<p class="muted">No comments yet. Be the first ❤️</p>';
@@ -127,32 +93,7 @@ async function renderComments(rows) {
     item.className = 'comment-item';
     const who = document.createElement('div');
     who.className = 'comment-name';
-    who.textContent = row.Name || 'Anonymous';const { data: { session } } = await supabaseClient.auth.getSession();
-
-if (session) {
-  const deleteBtn = document.createElement('button');
-  deleteBtn.textContent = '🗑️ Delete';
-  deleteBtn.style.marginTop = '8px';
-  deleteBtn.style.background = '#c0392b';
-
-  deleteBtn.addEventListener('click', async () => {
-    if (!confirm('Is comment ko delete karna hai?')) return;
-
-    const { error } = await supabaseClient
-      .from('Aromatic')
-      .delete()
-      .eq('id', row.id);
-
-    if (error) {
-      showStatus('Delete nahi hua: ' + error.message);
-      return;
-    }
-
-    await loadComments();
-  });
-
-  item.appendChild(deleteBtn);
-    }
+    who.textContent = row.Name || 'Anonymous';
     const text = document.createElement('div');
     text.className = 'comment-text';
     text.textContent = row.Comment || '';
