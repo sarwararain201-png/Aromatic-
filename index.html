@@ -106,7 +106,7 @@ function renderComments(rows) {
 async function loadComments() {
   const { data, error } = await supabaseClient
     .from('Aromatic')
-    .select('id, created_at, Name, Comment')
+    .select('created_at, Name, Comment')
     .order('created_at', { ascending: false });
 
   if (error) {
