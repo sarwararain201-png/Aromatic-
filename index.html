@@ -47,7 +47,14 @@ footer{text-align:center;color:#76687f;margin-top:25px}
   <source src="https://napgkwuhjfefpnxwkngc.supabase.co/storage/v1/object/public/Music/Chal%20Kahi%20Chale%20Sajna%20%20Suresh%20Wadkar%20%20Muqaddar%201996%20HD%20Songs%20%20Mithun%20Chakraborty,%20Ayesha%20Jhulka.mp3" type="audio/mpeg">
 </audio></div></div><div class="actions"><button class="like" data-song="Chal Kahen Chalen Sajna">❤️ Like <span class="like-count">0</span></button> <button class="comment" onclick="document.getElementById('commentBox').scrollIntoView({behavior:'smooth'})">💬 Comment</button></div></div>
 
-<div class="card" id="commentBox">
+<div class="card" id="commentBox"><div class="card" id="ownerLogin">
+  <h2 class="section-title">🔐 Owner Login</h2>
+  <input id="ownerEmail" type="email" placeholder="Owner email">
+  <input id="ownerPassword" type="password" placeholder="Owner password">
+  <button class="post" id="loginBtn">Login</button>
+  <button class="comment" id="logoutBtn" style="display:none;">Logout</button>
+  <p id="loginStatus" class="status muted"></p>
+</div>
 <h2 class="section-title">💬 Leave a Comment</h2>
 <input id="name" placeholder="Your name" autocomplete="name">
 <textarea id="comment" rows="3" placeholder="Write something..."></textarea>
@@ -65,7 +72,41 @@ const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_rgYS1XVqzo1tC9nbzIUJtA_uBcnK9b2
 const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
 
 const nameInput = document.getElementById('name');
-const commentInput = document.getElementById('comment');
+const commentInput = document.getElementById('comment');const ownerEmail = document.getElementById('ownerEmail');
+const ownerPassword = document.getElementById('ownerPassword');
+const loginBtn = document.getElementById('loginBtn');
+const logoutBtn = document.getElementById('logoutBtn');
+const loginStatus = document.getElementById('loginStatus');
+
+loginBtn.addEventListener('click', async () => {
+  const { error } = await supabaseClient.auth.signInWithPassword({
+    email: ownerEmail.value.trim(),
+    password: ownerPassword.value
+  });
+
+  if (error) {
+    loginStatus.textContent = 'Login failed: ' + error.message;
+    return;
+  }
+
+  loginStatus.textContent = 'Owner login successful ❤️';
+  ownerEmail.style.display = 'none';
+  ownerPassword.style.display = 'none';
+  loginBtn.style.display = 'none';
+  logoutBtn.style.display = 'inline-block';
+
+  await loadComments();
+});
+
+logoutBtn.addEventListener('click', async () => {
+  await supabaseClient.auth.signOut();
+
+  ownerEmail.style.display = 'block';
+  ownerPassword.style.display = 'block';
+  loginBtn.style.display = 'inline-block';
+  logoutBtn.style.display = 'none';
+  loginStatus.textContent = 'Logged out.';
+});
 const postBtn = document.getElementById('postBtn');
 const statusEl = document.getElementById('status');
 const commentsList = document.getElementById('commentsList');
@@ -75,7 +116,7 @@ function showStatus(message, ok=false) {
   statusEl.style.color = ok ? '#2e8b57' : '#c0392b';
 }
 
-function renderComments(rows) {
+async function renderComments(rows) {
   commentsList.innerHTML = '';
   if (!rows || rows.length === 0) {
     commentsList.innerHTML = '<p class="muted">No comments yet. Be the first ❤️</p>';
@@ -86,7 +127,32 @@ function renderComments(rows) {
     item.className = 'comment-item';
     const who = document.createElement('div');
     who.className = 'comment-name';
-    who.textContent = row.Name || 'Anonymous';
+    who.textContent = row.Name || 'Anonymous';const { data: { session } } = await supabaseClient.auth.getSession();
+
+if (session) {
+  const deleteBtn = document.createElement('button');
+  deleteBtn.textContent = '🗑️ Delete';
+  deleteBtn.style.marginTop = '8px';
+  deleteBtn.style.background = '#c0392b';
+
+  deleteBtn.addEventListener('click', async () => {
+    if (!confirm('Is comment ko delete karna hai?')) return;
+
+    const { error } = await supabaseClient
+      .from('Aromatic')
+      .delete()
+      .eq('id', row.id);
+
+    if (error) {
+      showStatus('Delete nahi hua: ' + error.message);
+      return;
+    }
+
+    await loadComments();
+  });
+
+  item.appendChild(deleteBtn);
+    }
     const text = document.createElement('div');
     text.className = 'comment-text';
     text.textContent = row.Comment || '';
@@ -99,7 +165,7 @@ function renderComments(rows) {
 async function loadComments() {
   const { data, error } = await supabaseClient
     .from('Aromatic')
-    .select('created_at, Name, Comment')
+    .select('id, created_at, Name, Comment')
     .order('created_at', { ascending: false });
 
   if (error) {
