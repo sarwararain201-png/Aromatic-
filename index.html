@@ -320,7 +320,48 @@ footer{
 .song-card:hover{
   transform:translateY(-4px);
   box-shadow:0 14px 32px rgba(120,80,170,.18);
-                       }
+                       }.song-card{
+  background:rgba(255,255,255,.72);
+  border:1px solid rgba(255,255,255,.85);
+  box-shadow:0 12px 35px rgba(100,70,130,.12);
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+  transition:all .3s ease;
+}
+
+.song-card:hover{
+  transform:translateY(-5px);
+  box-shadow:0 18px 40px rgba(100,70,130,.20);
+}.song-card h2{
+  font-family:Georgia,serif;
+  letter-spacing:.3px;
+}
+
+.song-card .artist{
+  font-size:13px;
+  letter-spacing:.6px;
+  opacity:.8;
+}.actions button{
+  border:none;
+  border-radius:14px;
+  padding:10px 15px;
+  font-size:14px;
+  cursor:pointer;
+  transition:all .25s ease;
+}
+
+.actions button:hover{
+  transform:translateY(-2px);
+  box-shadow:0 6px 15px rgba(100,70,130,.18);
+}
+
+.like{
+  background:#fff0f6;
+}
+
+.comment{
+  background:#f1edff;
+  }
 </style>
 </head>
 <body>
