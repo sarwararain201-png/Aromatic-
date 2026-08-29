@@ -82,7 +82,7 @@ function showStatus(message, ok=false) {
   statusEl.style.color = ok ? '#2e8b57' : '#c0392b';
 }
 
-function renderComments(rows) {
+async function renderComments(rows) {
   commentsList.innerHTML = '';
   if (!rows || rows.length === 0) {
     commentsList.innerHTML = '<p class="muted">No comments yet. Be the first ❤️</p>';
@@ -99,6 +99,34 @@ function renderComments(rows) {
     text.textContent = row.Comment || '';
     item.appendChild(who);
     item.appendChild(text);
+    const { data: { session } } = await supabaseClient.auth.getSession();
+
+if (session) {
+  const deleteBtn = document.createElement('button');
+  deleteBtn.textContent = '🗑️ Delete';
+  deleteBtn.style.background = '#c0392b';
+  deleteBtn.style.marginTop = '8px';
+
+  deleteBtn.addEventListener('click', async () => {
+    if (!confirm('Is comment ko delete karna hai?')) return;
+
+    const { error } = await supabaseClient
+      .from('Aromatic')
+      .delete()
+      .eq('Name', row.Name)
+      .eq('Comment', row.Comment)
+      .eq('created_at', row.created_at);
+
+    if (error) {
+      showStatus('Delete nahi hua: ' + error.message);
+      return;
+    }
+
+    await loadComments();
+  });
+
+  item.appendChild(deleteBtn);
+}
     commentsList.appendChild(item);
   });
 }
