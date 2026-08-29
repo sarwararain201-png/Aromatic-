@@ -313,7 +313,14 @@ footer{
 @keyframes coverFloatThree{
   0%,100%{transform:translateY(0) rotate(-5deg);}
   50%{transform:translateY(-5px) rotate(5deg);}
+}.song-card{
+  transition:transform .25s ease, box-shadow .25s ease;
 }
+
+.song-card:hover{
+  transform:translateY(-4px);
+  box-shadow:0 14px 32px rgba(120,80,170,.18);
+                       }
 </style>
 </head>
 <body>
