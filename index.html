@@ -265,6 +265,54 @@ footer{
   background:linear-gradient(135deg,#ff6fa5,#8d7cf6);
   box-shadow:0 8px 22px rgba(120,80,160,.28);
   transform:rotate(-2deg);
+}.cover-one{
+  background:linear-gradient(135deg,#ff7eb3,#9b7cff);
+  box-shadow:0 10px 25px rgba(130,90,170,.28);
+  position:relative;
+  overflow:hidden;
+}
+
+.cover-one span{
+  font-size:34px;
+  display:block;
+  animation:coverFloat 2.5s ease-in-out infinite;
+}
+
+@keyframes coverFloat{
+  0%,100%{transform:translateY(0) rotate(-5deg);}
+  50%{transform:translateY(-5px) rotate(5deg);}
+    }.cover-two{
+  background:linear-gradient(135deg,#7b61ff,#c084fc);
+  box-shadow:0 10px 25px rgba(110,80,180,.28);
+  position:relative;
+  overflow:hidden;
+}
+
+.cover-two span{
+  font-size:34px;
+  display:block;
+  animation:coverFloatTwo 2.5s ease-in-out infinite;
+}
+
+@keyframes coverFloatTwo{
+  0%,100%{transform:translateY(0) rotate(5deg);}
+  50%{transform:translateY(-5px) rotate(-5deg);}
+}.cover-three{
+  background:linear-gradient(135deg,#ff6b8a,#ffb36b);
+  box-shadow:0 10px 25px rgba(220,100,100,.28);
+  position:relative;
+  overflow:hidden;
+}
+
+.cover-three span{
+  font-size:34px;
+  display:block;
+  animation:coverFloatThree 2.5s ease-in-out infinite;
+}
+
+@keyframes coverFloatThree{
+  0%,100%{transform:translateY(0) rotate(-5deg);}
+  50%{transform:translateY(-5px) rotate(5deg);}
 }
 </style>
 </head>
@@ -292,7 +340,9 @@ footer{
 
 <div class="card song-card">
   <div class="song">
-    <div class="cover cover-one">🎵</div>
+    <div class="cover cover-one">
+  <span>🌸</span>
+</div>
     <div>
       <h2>Jab Hum Jawan Hongy</h2>
       <div class="artist">Aromatic Memories</div>
@@ -311,7 +361,9 @@ footer{
     </button>
   </div>
 </div>
-    <div class="cover cover-two">🎵</div>
+    <div class="cover cover-two">
+  <span>💜</span>
+</div>
     <div>
       <h2>Bichhran Bhi Zaroori Tha</h2>
       <div class="artist">Aromatic Memories</div>
@@ -333,7 +385,9 @@ footer{
 
 <div class="card song-card">
   <div class="song">
-    <div class="cover cover-three">🎸</div>
+   <div class="cover cover-three">
+  <span>🌹</span>
+</div> 
     <div>
       <h2>Chal Kahen Chalen Sajna</h2>
       <div class="artist">Pyar Yahan Karna Hai Mana</div>
