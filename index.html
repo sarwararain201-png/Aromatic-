@@ -391,7 +391,14 @@ footer{
 .cover:hover{
   transform:scale(1.08) rotate(2deg);
   box-shadow:0 15px 30px rgba(120,80,170,.28);
-         }
+         }.song-card h2{
+  transition:transform .25s ease, text-shadow .25s ease;
+}
+
+.song-card:hover h2{
+  transform:translateX(3px);
+  text-shadow:0 3px 12px rgba(120,80,170,.22);
+  }
 </style>
 </head>
 <body>
