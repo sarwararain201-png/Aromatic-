@@ -467,65 +467,41 @@ footer{
 @keyframes vipFloat{
   0%,100%{transform:translateY(0) scale(1);}
   50%{transform:translateY(-5px) scale(1.08);}
-}.media-nav{
-  display:flex;
-  gap:12px;
-  justify-content:center;
-  margin:18px 0;
-  flex-wrap:wrap;
+}
+    }.media-nav{
+  display:flex !important;
+  justify-content:center !important;
+  align-items:center !important;
+  gap:12px !important;
+  margin:20px 0 !important;
+  flex-wrap:wrap !important;
 }
 
 .media-nav button{
-  border:none;
-  border-radius:16px;
-  padding:12px 18px;
-  font-size:14px;
-  font-weight:600;
-  cursor:pointer;
-  background:linear-gradient(135deg,#fff0f7,#f1edff);
-  box-shadow:0 8px 20px rgba(100,70,130,.12);
-  transition:transform .25s ease,box-shadow .25s ease;
+  display:inline-block !important;
+  width:auto !important;
+  min-width:155px !important;
+  padding:14px 20px !important;
+  border:0 !important;
+  border-radius:20px !important;
+  color:#fff !important;
+  font-size:15px !important;
+  font-weight:700 !important;
+  cursor:pointer !important;
+  box-shadow:0 8px 20px rgba(0,0,0,.18) !important;
+}
+
+.media-nav button:first-child{
+  background:linear-gradient(135deg,#ff1493,#ff8c00) !important;
+}
+
+.media-nav button:last-child{
+  background:linear-gradient(135deg,#7b2cff,#00a8ff) !important;
 }
 
 .media-nav button:hover{
-  transform:translateY(-3px);
-  box-shadow:0 12px 26px rgba(100,70,130,.18);
- }.media-nav button:first-child{
-  background:linear-gradient(135deg,#ff4f9a,#ff8a5b);
-  color:white;
-  box-shadow:0 8px 22px rgba(255,79,154,.28);
-  }.media-nav {
-  display: flex !important;
-  gap: 12px !important;
-  justify-content: center !important;
-  margin: 18px 0 !important;
-  flex-wrap: wrap !important;
+  transform:translateY(-3px) scale(1.03) !important;
 }
-
-.media-nav button {
-  display: inline-block !important;
-  width: auto !important;
-  min-width: 150px !important;
-  border: none !important;
-  color: white !important;
-  font-weight: 700 !important;
-  padding: 13px 20px !important;
-  border-radius: 18px !important;
-  cursor: pointer !important;
-  background: #ff1493 !important;
-}
-
-.media-nav button:first-child {
-  background: linear-gradient(135deg, #ff1493, #ff7a18) !important;
-}
-
-.media-nav button:last-child {
-  background: linear-gradient(135deg, #6a11cb, #2575fc) !important;
-}
-
-.media-nav button:hover {
-  transform: translateY(-3px) scale(1.03) !important;
-    }
 </style>
 </head>
 <body>
