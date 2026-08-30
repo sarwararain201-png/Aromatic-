@@ -431,6 +431,42 @@ footer{
   border-top:1px solid rgba(118,104,127,.15);
   letter-spacing:.5px;
   opacity:.85;
+}.vip-song{
+  background:linear-gradient(135deg,rgba(255,248,220,.95),rgba(248,239,255,.95));
+  border:1px solid rgba(220,180,80,.35);
+  box-shadow:0 15px 40px rgba(150,110,40,.16);
+  position:relative;
+  overflow:hidden;
+}
+
+.vip-song::before{
+  content:"VIP";
+  position:absolute;
+  top:12px;
+  right:14px;
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:2px;
+  color:#a87920;
+  background:rgba(255,255,255,.65);
+  padding:5px 9px;
+  border-radius:10px;
+}
+
+.vip-cover{
+  background:linear-gradient(135deg,#d4af37,#f6df82);
+  box-shadow:0 10px 28px rgba(180,135,35,.28);
+}
+
+.vip-cover span{
+  font-size:34px;
+  display:block;
+  animation:vipFloat 2.5s ease-in-out infinite;
+}
+
+@keyframes vipFloat{
+  0%,100%{transform:translateY(0) scale(1);}
+  50%{transform:translateY(-5px) scale(1.08);}
 }
 </style>
 </head>
@@ -518,6 +554,29 @@ footer{
 
   <div class="actions">
     <button class="like" data-song="Chal Kahen Chalen Sajna">
+      ❤️ Like <span class="like-count">0</span>
+    </button>
+    <button class="comment" onclick="document.getElementById('commentBox').scrollIntoView({behavior:'smooth'})">
+      💬 Comment
+    </button>
+  </div>
+</div><div class="card song-card vip-song">
+  <div class="song">
+    <div class="cover vip-cover">
+      <span>👑</span>
+    </div>
+    <div>
+      <h2>Kaisi Teri Khudgharzi</h2>
+      <div class="artist">Rahat Fateh Ali Khan • OST</div>
+    </div>
+  </div>
+
+  <audio controls style="width:100%;margin-top:14px;">
+    <source src="https://napgkwuhjfefpnxwkngc.supabase.co/storage/v1/object/public/Music/Kaisi%20Teri%20Khudgharzi%20OST%20%20Without%20Dialogues%20%20Rahat%20Fateh%20Ali%20Khan%20%20Danish%20Taimoor%20%20ARY%20Digtial.mp3" type="audio/mpeg">
+  </audio>
+
+  <div class="actions">
+    <button class="like" data-song="Kaisi Teri Khudgharzi">
       ❤️ Like <span class="like-count">0</span>
     </button>
     <button class="comment" onclick="document.getElementById('commentBox').scrollIntoView({behavior:'smooth'})">
