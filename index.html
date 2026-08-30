@@ -1971,6 +1971,23 @@ document.querySelectorAll('audio').forEach(function(audio) {
   });
 
 });
+document.querySelectorAll('video').forEach(function(video) {
+
+  video.addEventListener('play', function() {
+
+    const card = video.closest('.song-card');
+    const title = card ? card.querySelector('h2') : null;
+
+    if (title) {
+      document.getElementById('nowPlayingTitle').textContent =
+        '🎬 ' + title.textContent.trim();
+
+      document.getElementById('nowPlaying').classList.add('show');
+    }
+
+  });
+
+});
 </script>
 
 </body>
