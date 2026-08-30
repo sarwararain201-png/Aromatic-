@@ -884,11 +884,137 @@ footer{
   .actions button{
     padding:10px 14px;
   }
-         }
+         }/* 🌸 WELCOME VIP ANIMATION */
+
+.welcome-screen{
+  position:fixed;
+  inset:0;
+  z-index:99999;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:25px;
+  background:
+    radial-gradient(circle at 20% 20%,rgba(255,255,255,.95),transparent 28%),
+    radial-gradient(circle at 80% 30%,rgba(255,190,225,.8),transparent 30%),
+    linear-gradient(135deg,#ffdce9,#dceeff,#eadcff);
+  animation:welcomeFadeOut 1s ease 4.5s forwards;
+}
+
+.welcome-content{
+  position:relative;
+  animation:welcomePop 1s ease;
+}
+
+.welcome-heart{
+  font-size:64px;
+  display:block;
+  animation:welcomeHeart 1.5s ease-in-out infinite;
+}
+
+.welcome-content h2{
+  margin:12px 0 8px;
+  font-size:30px;
+  font-family:Georgia,serif;
+  background:linear-gradient(90deg,#e84f91,#7565df,#ff8a18);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+
+.welcome-content p{
+  margin:0;
+  color:#725f7d;
+  font-size:15px;
+}
+
+@keyframes welcomePop{
+  0%{
+    opacity:0;
+    transform:scale(.7) translateY(20px);
+  }
+  100%{
+    opacity:1;
+    transform:scale(1) translateY(0);
+  }
+}
+
+@keyframes welcomeHeart{
+  0%,100%{
+    transform:scale(1) rotate(-5deg);
+  }
+  50%{
+    transform:scale(1.15) rotate(5deg);
+  }
+}
+
+@keyframes welcomeFadeOut{
+  0%{
+    opacity:1;
+    visibility:visible;
+  }
+  85%{
+    opacity:1;
+    visibility:visible;
+  }
+  100%{
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
+  }
+}
+
+/* Floating decorative bubbles */
+.welcome-screen::before,
+.welcome-screen::after{
+  position:absolute;
+  font-size:30px;
+  opacity:.65;
+}
+
+.welcome-screen::before{
+  content:"🌸 ✨ 💕";
+  top:15%;
+  left:8%;
+  animation:floatDecor 3s ease-in-out infinite;
+}
+
+.welcome-screen::after{
+  content:"💖 ✨ 🌸";
+  bottom:15%;
+  right:8%;
+  animation:floatDecor 3s ease-in-out infinite reverse;
+}
+
+@keyframes floatDecor{
+  0%,100%{
+    transform:translateY(0) rotate(-4deg);
+  }
+  50%{
+    transform:translateY(-12px) rotate(5deg);
+  }
+}
+
+@media(max-width:520px){
+  .welcome-heart{
+    font-size:55px;
+  }
+
+  .welcome-content h2{
+    font-size:25px;
+  }
+}
 </style>
 </head>
 
 <body>
+<div class="welcome-screen">
+  <div class="welcome-content">
+    <span class="welcome-heart">💖</span>
+    <h2>Welcome to Aromatic Memories</h2>
+    <p>Where songs become memories… 🌸🎵</p>
+  </div>
+    </div>
 <div class="wrap">
 
 <section class="hero">
