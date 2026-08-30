@@ -395,7 +395,496 @@ footer{
     padding:17px;
     border-radius:22px;
   }
+}/* 👑 VIP AROMATIC MEMORIES UPGRADE */
+
+.vip-song{
+  position:relative;
+  overflow:hidden;
+  background:linear-gradient(
+    135deg,
+    rgba(255,255,255,.92),
+    rgba(255,242,250,.88),
+    rgba(241,237,255,.92)
+  ) !important;
+  border:1px solid rgba(212,175,55,.35) !important;
+  box-shadow:
+    0 12px 35px rgba(110,70,150,.15),
+    0 0 25px rgba(212,175,55,.08) !important;
+  transition:transform .3s ease,box-shadow .3s ease !important;
 }
+
+.vip-song:hover{
+  transform:translateY(-6px) !important;
+  box-shadow:
+    0 20px 45px rgba(110,70,150,.22),
+    0 0 30px rgba(212,175,55,.15) !important;
+}
+
+/* VIP label */
+.vip-song::before{
+  content:"✦ VIP MEMORY ✦";
+  position:absolute;
+  top:12px;
+  right:12px;
+  z-index:2;
+  padding:5px 9px;
+  border-radius:12px;
+  font-size:9px;
+  font-weight:800;
+  letter-spacing:1.5px;
+  color:#8a6515;
+  background:linear-gradient(135deg,#fff8d8,#f6df82);
+  box-shadow:0 4px 12px rgba(180,135,35,.18);
+}
+
+/* Golden VIP cover */
+.vip-cover{
+  background:linear-gradient(
+    135deg,
+    #c89b2c,
+    #f8df7b,
+    #d4af37
+  ) !important;
+  box-shadow:
+    0 10px 28px rgba(180,135,35,.30),
+    inset 0 1px 8px rgba(255,255,255,.55) !important;
+  border:1px solid rgba(255,255,255,.65);
+}
+
+.vip-cover span{
+  display:block;
+  font-size:34px;
+  animation:vipFloat 2.4s ease-in-out infinite;
+  filter:drop-shadow(0 3px 5px rgba(100,70,20,.25));
+}
+
+@keyframes vipFloat{
+  0%,100%{
+    transform:translateY(0) scale(1);
+  }
+  50%{
+    transform:translateY(-5px) scale(1.08);
+  }
+}
+
+/* Golden shine moving across card */
+.vip-song::after{
+  content:"";
+  position:absolute;
+  top:-60%;
+  left:-80%;
+  width:45%;
+  height:220%;
+  background:linear-gradient(
+    90deg,
+    transparent,
+    rgba(255,255,255,.45),
+    transparent
+  );
+  transform:rotate(25deg);
+  animation:vipShine 5s ease-in-out infinite;
+  pointer-events:none;
+}
+
+@keyframes vipShine{
+  0%,55%{
+    left:-80%;
+  }
+  100%{
+    left:140%;
+  }
+}
+
+/* VIP audio player */
+.vip-song audio{
+  border-radius:14px;
+  filter:drop-shadow(0 5px 10px rgba(100,70,130,.10));
+}
+
+/* VIP buttons */
+.vip-song .like{
+  background:linear-gradient(
+    135deg,
+    #ff4f9a,
+    #ff7a18
+  ) !important;
+  color:white !important;
+  box-shadow:0 7px 18px rgba(255,79,154,.22);
+}
+
+.vip-song .comment{
+  background:linear-gradient(
+    135deg,
+    #7b2cff,
+    #2575fc
+  ) !important;
+  color:white !important;
+  box-shadow:0 7px 18px rgba(80,80,220,.20);
+}
+
+.vip-song .like:hover,
+.vip-song .comment:hover{
+  transform:translateY(-3px) scale(1.03);
+}
+
+/* Mobile polish */
+@media(max-width:520px){
+  .vip-song::before{
+    font-size:8px;
+    padding:4px 7px;
+  }
+
+  .vip-song{
+    border-radius:23px !important;
+  }
+  }/* ✨ VIP HERO + MEMORY EFFECTS */
+
+.hero{
+  position:relative;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 15% 20%,rgba(255,255,255,.95),transparent 25%),
+    radial-gradient(circle at 85% 30%,rgba(255,190,225,.75),transparent 30%),
+    linear-gradient(135deg,#fff0f7,#f1edff,#fff8df) !important;
+  border:1px solid rgba(255,255,255,.9);
+  box-shadow:
+    0 18px 45px rgba(100,70,130,.16),
+    0 0 35px rgba(255,180,220,.12);
+}
+
+.hero h1{
+  animation:titleGlow 3s ease-in-out infinite;
+}
+
+@keyframes titleGlow{
+  0%,100%{
+    filter:drop-shadow(0 3px 8px rgba(232,79,145,.12));
+  }
+  50%{
+    filter:drop-shadow(0 5px 18px rgba(117,101,223,.30));
+  }
+}
+
+/* Floating flower */
+.floating{
+  position:absolute;
+  top:10px;
+  left:18px;
+  font-size:28px;
+  animation:floatingFlower 3s ease-in-out infinite;
+  pointer-events:none;
+}
+
+@keyframes floatingFlower{
+  0%,100%{
+    transform:translateY(0) rotate(-8deg);
+  }
+  50%{
+    transform:translateY(-8px) rotate(8deg);
+  }
+}
+
+/* Premium Explore button */
+.explore{
+  position:relative;
+  overflow:hidden;
+  margin-top:12px;
+  padding:13px 22px !important;
+  border-radius:20px !important;
+  background:linear-gradient(
+    135deg,
+    #ff1493,
+    #ff7a18,
+    #7b2cff
+  ) !important;
+  background-size:200% 200% !important;
+  box-shadow:
+    0 9px 25px rgba(220,70,150,.28),
+    0 0 18px rgba(255,180,220,.20) !important;
+  animation:buttonGradient 4s ease infinite;
+}
+
+@keyframes buttonGradient{
+  0%{
+    background-position:0% 50%;
+  }
+  50%{
+    background-position:100% 50%;
+  }
+  100%{
+    background-position:0% 50%;
+  }
+}
+
+.explore::after{
+  content:"";
+  position:absolute;
+  top:0;
+  left:-100%;
+  width:60%;
+  height:100%;
+  background:linear-gradient(
+    90deg,
+    transparent,
+    rgba(255,255,255,.45),
+    transparent
+  );
+  transform:skewX(-20deg);
+  animation:buttonShine 3.5s infinite;
+}
+
+@keyframes buttonShine{
+  0%,55%{
+    left:-100%;
+  }
+  100%{
+    left:150%;
+  }
+}
+
+.explore:hover{
+  transform:translateY(-3px) scale(1.04) !important;
+}
+
+/* Audio / Video navigation */
+.media-nav{
+  position:relative;
+  z-index:3;
+}
+
+.media-nav button{
+  position:relative;
+  overflow:hidden;
+  min-width:155px !important;
+  border-radius:20px !important;
+  font-size:15px !important;
+  font-weight:800 !important;
+  letter-spacing:.2px;
+  transition:
+    transform .25s ease,
+    box-shadow .25s ease !important;
+}
+
+.media-nav button:first-child{
+  background:
+    linear-gradient(
+      135deg,
+      #ff1493,
+      #ff7a18
+    ) !important;
+  box-shadow:
+    0 9px 24px rgba(255,20,147,.25) !important;
+}
+
+.media-nav button:last-child{
+  background:
+    linear-gradient(
+      135deg,
+      #7b2cff,
+      #00a8ff
+    ) !important;
+  box-shadow:
+    0 9px 24px rgba(70,90,230,.25) !important;
+}
+
+.media-nav button:hover{
+  transform:translateY(-4px) scale(1.04) !important;
+}
+
+/* Section headings */
+.section-title{
+  background:linear-gradient(
+    90deg,
+    #e84f91,
+    #7565df
+  );
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+
+/* Little premium glow on cards */
+.song-card{
+  position:relative;
+}
+
+.song-card::marker{
+  display:none;
+ }/* 👑 FINAL VIP FINISHING */
+
+#commentBox{
+  position:relative;
+  overflow:hidden;
+  background:
+    linear-gradient(135deg,
+      rgba(255,255,255,.88),
+      rgba(255,240,248,.88),
+      rgba(241,237,255,.88)
+    ) !important;
+  border:1px solid rgba(255,255,255,.9) !important;
+  box-shadow:
+    0 16px 40px rgba(100,70,130,.15),
+    0 0 25px rgba(220,150,210,.10) !important;
+}
+
+/* Comment heading */
+#commentBox .section-title{
+  letter-spacing:.3px;
+}
+
+/* Inputs VIP glow */
+#commentBox input,
+#commentBox textarea{
+  border:1px solid rgba(180,145,210,.35);
+  box-shadow:0 5px 15px rgba(100,70,130,.06);
+}
+
+#commentBox input:focus,
+#commentBox textarea:focus{
+  border-color:#b47ee8;
+  box-shadow:
+    0 0 0 3px rgba(180,126,232,.13),
+    0 6px 18px rgba(100,70,130,.10);
+}
+
+/* Post button */
+.post{
+  background:linear-gradient(
+    135deg,
+    #ff4f9a,
+    #ff7a18,
+    #8a4dff
+  ) !important;
+  background-size:200% 200% !important;
+  box-shadow:
+    0 8px 22px rgba(255,79,154,.25) !important;
+  animation:postGlow 4s ease infinite;
+}
+
+@keyframes postGlow{
+  0%,100%{
+    background-position:0% 50%;
+  }
+  50%{
+    background-position:100% 50%;
+  }
+}
+
+/* Comment bubbles */
+.comment-item{
+  position:relative;
+  background:
+    linear-gradient(135deg,
+      rgba(255,245,250,.95),
+      rgba(244,241,255,.95)
+    ) !important;
+  border:1px solid rgba(255,255,255,.9) !important;
+  box-shadow:0 8px 22px rgba(100,70,130,.09);
+}
+
+.comment-name{
+  background:linear-gradient(
+    90deg,
+    #e84f91,
+    #7565df
+  );
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+
+/* Heart pulse */
+.like.liked{
+  animation:heartPop .35s ease;
+}
+
+@keyframes heartPop{
+  0%{
+    transform:scale(1);
+  }
+  50%{
+    transform:scale(1.18);
+  }
+  100%{
+    transform:scale(1.05);
+  }
+}
+
+/* Memory card */
+.memory-card{
+  position:relative;
+  overflow:hidden;
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255,240,248,.94),
+      rgba(241,237,255,.94),
+      rgba(255,248,225,.92)
+    ) !important;
+  border:1px solid rgba(255,255,255,.95) !important;
+  box-shadow:
+    0 16px 40px rgba(100,70,130,.14),
+    0 0 25px rgba(255,180,210,.10);
+}
+
+.memory-icon{
+  display:inline-block;
+  animation:memoryHeart 2.2s ease-in-out infinite;
+}
+
+@keyframes memoryHeart{
+  0%,100%{
+    transform:scale(1) rotate(-4deg);
+  }
+  50%{
+    transform:scale(1.12) rotate(4deg);
+  }
+}
+
+.memory-text{
+  line-height:1.7;
+}
+
+/* Footer VIP */
+footer{
+  margin-top:28px;
+  padding:22px 10px;
+  border-top:1px solid rgba(118,104,127,.16);
+  background:linear-gradient(
+    90deg,
+    rgba(255,240,248,.45),
+    rgba(241,237,255,.45)
+  );
+  border-radius:20px;
+}
+
+/* Smooth page feel */
+.card{
+  transition:
+    transform .25s ease,
+    box-shadow .25s ease;
+}
+
+/* Mobile final polish */
+@media(max-width:520px){
+  .hero h1{
+    font-size:33px;
+  }
+
+  .explore{
+    width:100%;
+  }
+
+  .media-nav{
+    gap:10px !important;
+  }
+
+  .media-nav button{
+    min-width:145px !important;
+  }
+
+  .actions button{
+    padding:10px 14px;
+  }
+         }
 </style>
 </head>
 
