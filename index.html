@@ -1160,6 +1160,7 @@ footer{
   <h2 class="section-title">🎵 My Favorite Songs</h2>
   <p class="muted">My favorite songs, memories and feelings.</p>
 </div>
+  <div id="autoSongs"></div>
 
 <div class="card song-card" id="audioSection">
   <div class="song">
@@ -2009,6 +2010,46 @@ document.querySelectorAll('video').forEach(function(video) {
 
   });
 
+});
+  const autoSongs = [
+  {
+    title: "Jab Hum Jawan Hongy",
+    artist: "Aromatic Memories",
+    icon: "🌸",
+    url: "https://napgkwuhjfefpnxwkngc.supabase.co/storage/v1/object/public/Music/Jab%20Hum%20Jawan%20Honge%20Jhankar%20HD,%20Betaab1983%20Lata%20Mangeshkar,%20Shabbir%20Kumar.mp3"
+  },
+  {
+    title: "Bichhran Bhi Zaroori Tha",
+    artist: "Rahat Fateh Ali Khan",
+    icon: "💜",
+    url: "https://napgkwuhjfefpnxwkngc.supabase.co/storage/v1/object/public/Music/Zaroori%20Tha%20-%20Rahat%20Fateh%20Ali%20Khan%20-%20Virsa%20Heritage%20Revived.mp3"
+  }
+];
+
+const autoSongsBox = document.getElementById("autoSongs");
+
+autoSongs.forEach(function(song) {
+  const card = document.createElement("div");
+  card.className = "card song-card";
+
+  card.innerHTML = `
+    <div class="song">
+      <div class="cover">
+        <span>${song.icon}</span>
+      </div>
+
+      <div>
+        <h2>${song.title}</h2>
+        <div class="artist">${song.artist}</div>
+
+        <audio controls style="width:100%;margin-top:10px;">
+          <source src="${song.url}" type="audio/mpeg">
+        </audio>
+      </div>
+    </div>
+  `;
+
+  autoSongsBox.appendChild(card);
 });
 </script>
 
