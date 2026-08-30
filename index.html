@@ -1987,6 +1987,28 @@ document.querySelectorAll('video').forEach(function(video) {
 
   });
 
+});/* 🎬 Video ko priority do */
+
+document.querySelectorAll('video').forEach(function(video) {
+
+  video.addEventListener('play', function() {
+
+    document.querySelectorAll('audio').forEach(function(audio) {
+      audio.pause();
+    });
+
+    const card = video.closest('.song-card');
+    const title = card ? card.querySelector('h2') : null;
+
+    if (title) {
+      document.getElementById('nowPlayingTitle').textContent =
+        '🎬 ' + title.textContent.trim();
+
+      document.getElementById('nowPlaying').classList.add('show');
+    }
+
+  });
+
 });
 </script>
 
