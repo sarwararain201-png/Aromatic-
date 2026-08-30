@@ -1003,7 +1003,37 @@ footer{
   .welcome-content h2{
     font-size:25px;
   }
+}/* 🌸 FLOATING MEMORIES EFFECT */
+
+.memory-float{
+  position:fixed;
+  bottom:-50px;
+  z-index:9998;
+  pointer-events:none;
+  font-size:22px;
+  opacity:0;
+  animation:memoryFloat 7s linear forwards;
 }
+
+@keyframes memoryFloat{
+  0%{
+    transform:translateY(0) rotate(0deg) scale(.8);
+    opacity:0;
+  }
+
+  12%{
+    opacity:.75;
+  }
+
+  70%{
+    opacity:.55;
+  }
+
+  100%{
+    transform:translateY(-110vh) rotate(25deg) scale(1.15);
+    opacity:0;
+  }
+  }
 </style>
 </head>
 
@@ -1811,6 +1841,32 @@ document
 
 loadLikes();
 </script>
+/* 🌸 Floating memories */
+
+const floatingItems = ['🌸','💖','✨','💕','🌷','💗'];
+
+function createMemoryFloat(){
+  const item = document.createElement('div');
+
+  item.className = 'memory-float';
+  item.textContent =
+    floatingItems[Math.floor(Math.random() * floatingItems.length)];
+
+  item.style.left = Math.random() * 100 + 'vw';
+  item.style.animationDuration =
+    (5 + Math.random() * 4) + 's';
+
+  item.style.fontSize =
+    (18 + Math.random() * 12) + 'px';
+
+  document.body.appendChild(item);
+
+  setTimeout(() => {
+    item.remove();
+  }, 9000);
+}
+
+setInterval(createMemoryFloat, 1400);
 
 </body>
       </html>
