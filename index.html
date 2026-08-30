@@ -1033,6 +1033,81 @@ footer{
     transform:translateY(-110vh) rotate(25deg) scale(1.15);
     opacity:0;
   }
+  }/* 🎵 VIP NOW PLAYING BAR */
+
+.now-playing{
+  position:fixed;
+  left:12px;
+  right:12px;
+  bottom:14px;
+  z-index:9997;
+  display:none;
+  align-items:center;
+  gap:12px;
+  padding:12px 15px;
+  border-radius:22px;
+  background:rgba(255,255,255,.88);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+  border:1px solid rgba(255,255,255,.9);
+  box-shadow:0 12px 35px rgba(80,50,100,.22);
+  animation:playerIn .4s ease;
+}
+
+.now-playing.show{
+  display:flex;
+}
+
+.now-playing-icon{
+  width:42px;
+  height:42px;
+  min-width:42px;
+  display:grid;
+  place-items:center;
+  border-radius:14px;
+  font-size:22px;
+  background:linear-gradient(135deg,#ff4f9a,#7565df);
+}
+
+.now-playing-info{
+  min-width:0;
+  flex:1;
+}
+
+.now-playing-label{
+  font-size:11px;
+  font-weight:700;
+  color:#9a7aaa;
+  text-transform:uppercase;
+  letter-spacing:1px;
+}
+
+.now-playing-title{
+  font-size:14px;
+  font-weight:700;
+  color:#4b3858;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+@keyframes playerIn{
+  from{
+    opacity:0;
+    transform:translateY(20px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+@media(max-width:520px){
+  .now-playing{
+    bottom:10px;
+    left:9px;
+    right:9px;
+  }
   }
 </style>
 </head>
@@ -1045,6 +1120,19 @@ footer{
     <p>Where songs become memories… 🌸🎵</p>
   </div>
     </div>
+  <body>
+
+<div class="now-playing" id="nowPlaying">
+  <div class="now-playing-icon">🎵</div>
+
+  <div class="now-playing-info">
+    <div class="now-playing-label">Now Playing</div>
+    <div class="now-playing-title" id="nowPlayingTitle">
+      Aromatic Memories
+    </div>
+  </div>
+</div>
+
 <div class="wrap">
 
 <section class="hero">
@@ -1866,6 +1954,23 @@ function createMemoryFloat(){
 }
 
 setInterval(createMemoryFloat, 1400);
+document.querySelectorAll('audio').forEach(function(audio) {
+
+  audio.addEventListener('play', function() {
+
+    const card = audio.closest('.song-card');
+    const title = card ? card.querySelector('h2') : null;
+
+    if (title) {
+      document.getElementById('nowPlayingTitle').textContent =
+        title.textContent.trim();
+
+      document.getElementById('nowPlaying').classList.add('show');
+    }
+
+  });
+
+});
 </script>
 
 </body>
