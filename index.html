@@ -2155,33 +2155,7 @@ loadComments();
 loadLikes();
 
 </script>
-<script>
-const floatingItems = [
-  "🌸","💖","✨","💕","🌷","💗","🌹","💜","💎"
-];
 
-function createMemoryFloat(){
-  const item = document.createElement("div");
-
-  item.className = "memory-float";
-  item.textContent =
-    floatingItems[Math.floor(Math.random() * floatingItems.length)];
-
-  item.style.left = Math.random() * 100 + "vw";
-  item.style.animationDuration =
-    (5 + Math.random() * 4) + "s";
-  item.style.fontSize =
-    (18 + Math.random() * 14) + "px";
-
-  document.body.appendChild(item);
-
-  setTimeout(function(){
-    item.remove();
-  }, 9500);
-}
-
-setInterval(createMemoryFloat, 900);
-</script>
   
 <script>
 /* ================= VISITOR TRACKING ================= */
