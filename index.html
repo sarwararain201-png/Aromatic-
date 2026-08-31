@@ -2193,16 +2193,12 @@ setInterval(createMemoryFloat, 900);
       visitorId = crypto.randomUUID();
       localStorage.setItem("aromatic_visitor_id", visitorId);
     }
-
-    const page = window.location.pathname || "/";
-
-    const { error } = await supabaseClient
+ const { error } = await supabaseClient
       .from("visitors")
       .upsert(
         {
           visitor_id: visitorId,
           last_seen: new Date().toISOString(),
-          page: page
         },
         {
           onConflict: "visitor_id"
