@@ -2182,5 +2182,40 @@ function createMemoryFloat(){
 
 setInterval(createMemoryFloat, 900);
 </script>
+<script>
+/* ================= VISITOR TRACKING ================= */
+
+(async function trackVisitor() {
+  try {
+    let visitorId = localStorage.getItem("aromatic_visitor_id");
+
+    if (!visitorId) {
+      visitorId = crypto.randomUUID();
+      localStorage.setItem("aromatic_visitor_id", visitorId);
+    }
+
+    const page = window.location.pathname || "/";
+
+    const { error } = await supabaseClient
+      .from("visitors")
+      .upsert(
+        {
+          visitor_id: visitorId,
+          last_seen: new Date().toISOString(),
+          page: page
+        },
+        {
+          onConflict: "visitor_id"
+        }
+      );
+
+    if (error) {
+      console.log("Visitor tracking:", error.message);
+    }
+  } catch (err) {
+    console.log("Visitor tracking error:", err);
+  }
+})();
+</script>
 </body>
 </html>
