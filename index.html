@@ -2182,36 +2182,61 @@ function createMemoryFloat(){
 
 setInterval(createMemoryFloat, 900);
 </script>
+  
 <script>
 /* ================= VISITOR TRACKING ================= */
 
 (async function trackVisitor() {
   try {
-    let visitorId = localStorage.getItem("aromatic_visitor_id");
+
+    let visitorId =
+      localStorage.getItem("aromatic_visitor_id");
 
     if (!visitorId) {
-      visitorId = crypto.randomUUID();
-      localStorage.setItem("aromatic_visitor_id", visitorId);
-    }
- const { error } = await supabaseClient
-      .from("visitors")
-      .upsert(
-        {
-          visitor_id: visitorId,
-          last_seen: new Date().toISOString(),
-        },
-        {
-          onConflict: "visitor_id"
-        }
+      visitorId =
+        "visitor-" +
+        Date.now() +
+        "-" +
+        Math.random().toString(36).slice(2);
+
+      localStorage.setItem(
+        "aromatic_visitor_id",
+        visitorId
       );
+    }
+
+    const { error } =
+      await supabaseClient
+        .from("visitors")
+        .upsert(
+          {
+            visitor_id: visitorId,
+            last_seen: new Date().toISOString()
+          },
+          {
+            onConflict: "visitor_id"
+          }
+        );
 
     if (error) {
-      console.log("Visitor tracking:", error.message);
+      console.error(
+        "Visitor tracking error:",
+        error.message
+      );
+    } else {
+      console.log("Visitor tracking successful");
     }
+
   } catch (err) {
-    console.log("Visitor tracking error:", err);
+
+    console.error(
+      "Visitor tracking error:",
+      err
+    );
+
   }
 })();
 </script>
+
 </body>
 </html>
