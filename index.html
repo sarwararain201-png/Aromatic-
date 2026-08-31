@@ -2156,59 +2156,33 @@ loadLikes();
 
 </script>
 
-  
 <script>
-/* ================= VISITOR TRACKING ================= */
+/* ================= VISITOR TEST ================= */
 
-(async function trackVisitor() {
-  try {
+(async function () {
 
-    let visitorId =
-      localStorage.getItem("aromatic_visitor_id");
+  const visitorId =
+    "visitor-" +
+    Date.now() +
+    "-" +
+    Math.random().toString(36).substring(2, 10);
 
-    if (!visitorId) {
-      visitorId =
-        "visitor-" +
-        Date.now() +
-        "-" +
-        Math.random().toString(36).slice(2);
+  const { data, error } =
+    await supabaseClient
+      .from("visitors")
+      .insert({
+        visitor_id: visitorId,
+        last_seen: new Date().toISOString(),
+        page: window.location.pathname || "/"
+      })
+      .select();
 
-      localStorage.setItem(
-        "aromatic_visitor_id",
-        visitorId
-      );
-    }
-
-    const { error } =
-      await supabaseClient
-        .from("visitors")
-        .upsert(
-          {
-            visitor_id: visitorId,
-            last_seen: new Date().toISOString()
-          },
-          {
-            onConflict: "visitor_id"
-          }
-        );
-
-    if (error) {
-      console.error(
-        "Visitor tracking error:",
-        error.message
-      );
-    } else {
-      console.log("Visitor tracking successful");
-    }
-
-  } catch (err) {
-
-    console.error(
-      "Visitor tracking error:",
-      err
-    );
-
+  if (error) {
+    console.error("VISITOR ERROR:", error);
+  } else {
+    console.log("VISITOR SUCCESS:", data);
   }
+
 })();
 </script>
 
