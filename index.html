@@ -6,371 +6,6 @@
 <title>Aromatic Memories</title>
 
 <style>
-*{box-sizing:border-box}
-
-html{scroll-behavior:smooth}
-
-body{
-  margin:0;
-  font-family:Arial,sans-serif;
-  background:
-    radial-gradient(circle at 10% 10%,rgba(255,255,255,.9),transparent 28%),
-    radial-gradient(circle at 90% 20%,rgba(255,190,220,.7),transparent 30%),
-    linear-gradient(135deg,#ffdce9,#dceeff,#eadcff);
-  color:#30243a;
-  min-height:100vh;
-}
-
-.wrap{
-  max-width:720px;
-  margin:auto;
-  padding:18px 15px 40px;
-}
-
-/* HERO */
-.hero{
-  position:relative;
-  overflow:hidden;
-  text-align:center;
-  padding:45px 20px 35px;
-  border-radius:30px;
-  background:linear-gradient(135deg,#fff0f7,#f1edff);
-  box-shadow:0 15px 40px rgba(100,70,130,.12);
-}
-
-.hero h1{
-  font-size:42px;
-  line-height:1.1;
-  margin:0 0 10px;
-  display:inline-block;
-  padding:8px 18px;
-  border-radius:20px;
-  background:linear-gradient(90deg,#e84f91,#7565df);
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-  text-shadow:0 3px 12px rgba(120,80,150,.15);
-}
-
-.tag{
-  font-size:17px;
-  color:#725f7d;
-  margin:0;
-}
-
-.welcome{
-  font-size:16px;
-  line-height:1.6;
-}
-
-/* EXPLORE */
-.explore{
-  background:linear-gradient(135deg,#20a060,#39c878)!important;
-  color:white!important;
-  display:inline-block;
-  border:0;
-  border-radius:999px;
-  padding:13px 20px;
-  font-weight:700;
-  cursor:pointer;
-  box-shadow:0 8px 22px rgba(32,160,96,.30);
-  transition:.2s ease;
-}
-
-.explore:hover{
-  transform:translateY(-3px) scale(1.03);
-  box-shadow:0 12px 28px rgba(32,160,96,.40);
-}
-
-/* CARDS */
-.card{
-  background:rgba(255,255,255,.82);
-  backdrop-filter:blur(12px);
-  -webkit-backdrop-filter:blur(12px);
-  border:1px solid rgba(255,255,255,.75);
-  border-radius:26px;
-  padding:20px;
-  margin:17px 0;
-  box-shadow:0 12px 35px rgba(80,50,100,.14);
-}
-
-.section-title{
-  font-size:23px;
-  margin:0 0 7px;
-}
-
-.muted{
-  color:#76687f;
-  margin:7px 0;
-}
-
-/* MEDIA NAV */
-.media-nav{
-  display:flex!important;
-  justify-content:center!important;
-  align-items:center!important;
-  gap:12px!important;
-  margin:20px 0!important;
-  flex-wrap:wrap!important;
-}
-
-.media-nav button{
-  display:inline-block!important;
-  width:auto!important;
-  min-width:155px!important;
-  padding:14px 20px!important;
-  border:0!important;
-  border-radius:20px!important;
-  color:#fff!important;
-  font-size:15px!important;
-  font-weight:700!important;
-  cursor:pointer!important;
-  box-shadow:0 8px 20px rgba(0,0,0,.18)!important;
-  transition:.25s ease;
-}
-
-.media-nav button:first-child{
-  background:linear-gradient(135deg,#ff1493,#ff8c00)!important;
-}
-
-.media-nav button:last-child{
-  background:linear-gradient(135deg,#7b2cff,#00a8ff)!important;
-}
-
-.media-nav button:hover{
-  transform:translateY(-3px) scale(1.03);
-}
-
-/* SONG */
-.song-card{
-  transition:.3s ease;
-  background:rgba(255,255,255,.72);
-  border:1px solid rgba(255,255,255,.85);
-  box-shadow:0 12px 35px rgba(100,70,130,.12);
-}
-
-.song-card:hover{
-  transform:translateY(-5px);
-  box-shadow:0 18px 40px rgba(100,70,130,.20);
-}
-
-.song{
-  display:flex;
-  align-items:center;
-  gap:15px;
-}
-
-.cover{
-  width:70px;
-  height:70px;
-  min-width:70px;
-  border-radius:22px;
-  display:grid;
-  place-items:center;
-  font-size:32px;
-  box-shadow:0 10px 25px rgba(130,90,170,.25);
-  transition:.3s ease;
-}
-
-.cover:hover{
-  transform:scale(1.08) rotate(2deg);
-}
-
-.song h2{
-  font-family:Georgia,serif;
-  font-size:19px;
-  margin:0 0 5px;
-  letter-spacing:.3px;
-}
-
-.artist{
-  font-size:13px;
-  color:#796b82;
-  letter-spacing:.5px;
-}
-
-audio{
-  max-width:100%;
-}
-
-/* COVERS */
-.cover-one{
-  background:linear-gradient(135deg,#ff7eb3,#9b7cff);
-}
-
-.cover-two{
-  background:linear-gradient(135deg,#7b61ff,#c084fc);
-}
-
-.cover-three{
-  background:linear-gradient(135deg,#ff6b8a,#ffb36b);
-}
-
-.cover-one span,
-.cover-two span,
-.cover-three span{
-  font-size:34px;
-  display:block;
-  animation:coverFloat 2.5s ease-in-out infinite;
-}
-
-@keyframes coverFloat{
-  0%,100%{transform:translateY(0) rotate(-5deg)}
-  50%{transform:translateY(-5px) rotate(5deg)}
-}
-
-/* VIP */
-.vip-song{
-  background:linear-gradient(135deg,rgba(255,248,220,.95),rgba(248,239,255,.95));
-  border:1px solid rgba(220,180,80,.35);
-  box-shadow:0 15px 40px rgba(150,110,40,.16);
-  position:relative;
-  overflow:hidden;
-}
-
-.vip-song::before{
-  content:"VIP";
-  position:absolute;
-  top:12px;
-  right:14px;
-  font-size:11px;
-  font-weight:700;
-  letter-spacing:2px;
-  color:#a87920;
-  background:rgba(255,255,255,.65);
-  padding:5px 9px;
-  border-radius:10px;
-}
-
-.vip-cover{
-  background:linear-gradient(135deg,#d4af37,#f6df82);
-  box-shadow:0 10px 28px rgba(180,135,35,.28);
-}
-
-.vip-cover span{
-  font-size:34px;
-  display:block;
-  animation:vipFloat 2.5s ease-in-out infinite;
-}
-
-@keyframes vipFloat{
-  0%,100%{transform:translateY(0) scale(1)}
-  50%{transform:translateY(-5px) scale(1.08)}
-}
-
-/* BUTTONS */
-.actions{
-  display:flex;
-  gap:10px;
-  margin-top:17px;
-  flex-wrap:wrap;
-}
-
-button{
-  border:0;
-  border-radius:999px;
-  padding:11px 17px;
-  color:white;
-  font-weight:700;
-  font-size:14px;
-  cursor:pointer;
-  transition:.18s ease;
-  box-shadow:0 5px 14px rgba(80,50,100,.14);
-}
-
-button:hover{transform:translateY(-2px)}
-button:active{transform:scale(.96)}
-
-.like{
-  background:linear-gradient(135deg,#7565df,#9b70e8);
-}
-
-.comment{
-  background:linear-gradient(135deg,#3d9edb,#63bde8);
-}
-
-.post{
-  background:linear-gradient(135deg,#ff5e9b,#ff7bba);
-}
-
-.like.liked{
-  transform:scale(1.08);
-}
-
-/* INPUTS */
-input,textarea{
-  width:100%;
-  border:1px solid #ddd0e5;
-  border-radius:16px;
-  padding:13px;
-  margin:7px 0;
-  font-size:16px;
-  background:rgba(255,255,255,.95);
-  outline:none;
-}
-
-input:focus,textarea:focus{
-  border-color:#b989df;
-  box-shadow:0 0 0 3px rgba(185,137,223,.15);
-}
-
-/* COMMENTS */
-#commentsList{margin-top:17px}
-
-.comment-item{
-  padding:15px;
-  border-radius:18px;
-  background:linear-gradient(135deg,#faf5fc,#f3f5ff);
-  margin:10px 0;
-  border:1px solid rgba(220,205,230,.7);
-  transition:.25s ease;
-}
-
-.comment-item:hover{
-  transform:translateY(-3px);
-  box-shadow:0 10px 24px rgba(100,70,130,.12);
-}
-
-.comment-name{
-  font-weight:700;
-  color:#5e4770;
-}
-
-.comment-text{
-  margin-top:6px;
-  white-space:pre-wrap;
-  line-height:1.5;
-}
-
-#commentBox{
-  background:rgba(255,255,255,.75);
-  border:1px solid rgba(255,255,255,.9);
-  box-shadow:0 15px 35px rgba(100,70,130,.12);
-}
-
-/* MEMORY */
-.memory-card{
-  background:linear-gradient(135deg,rgba(255,240,248,.9),rgba(241,237,255,.9));
-  text-align:center;
-  transition:.3s ease;
-}
-
-.memory-icon{
-  font-size:42px;
-}
-
-/* FOOTER */
-footer{
-  text-align:center;
-  color:#76687f;
-  margin-top:30px;
-  padding:18px 10px;
-  border-top:1px solid rgba(118,104,127,.15);
-}
-/* ================================
-   AROMATIC MEMORIES — VVIP DESIGN
-   PART 2
-================================ */
-
 *{
   box-sizing:border-box;
 }
@@ -382,25 +17,112 @@ html{
 body{
   margin:0;
   font-family:Arial,sans-serif;
-  background:
-    radial-gradient(circle at 10% 10%,rgba(255,255,255,.95),transparent 28%),
-    radial-gradient(circle at 90% 20%,rgba(255,190,220,.75),transparent 30%),
-    radial-gradient(circle at 50% 100%,rgba(200,190,255,.65),transparent 35%),
-    linear-gradient(135deg,#ffdce9,#dceeff,#eadcff);
   color:#30243a;
   min-height:100vh;
+  background:
+    radial-gradient(circle at 10% 10%,rgba(255,255,255,.95),transparent 25%),
+    radial-gradient(circle at 90% 15%,rgba(255,170,215,.75),transparent 30%),
+    radial-gradient(circle at 50% 100%,rgba(180,190,255,.70),transparent 35%),
+    linear-gradient(135deg,#ffd9e8,#dceeff,#eadcff);
+}
+
+button,
+input,
+textarea{
+  font-family:inherit;
+}
+
+button{
+  border:0;
+  cursor:pointer;
 }
 
 .wrap{
   width:100%;
   max-width:760px;
   margin:auto;
-  padding:18px 15px 50px;
+  padding:15px 14px 100px;
 }
 
-/* ================================
-   VVIP HERO
-================================ */
+/* =========================
+   WELCOME SCREEN
+========================= */
+
+.welcome-screen{
+  position:fixed;
+  inset:0;
+  z-index:99999;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:25px;
+  background:
+    radial-gradient(circle at 20% 20%,rgba(255,255,255,.96),transparent 28%),
+    radial-gradient(circle at 80% 30%,rgba(255,190,225,.85),transparent 30%),
+    linear-gradient(135deg,#ffd9e8,#dceeff,#eadcff);
+  animation:welcomeFade 4.5s ease forwards;
+  pointer-events:none;
+}
+
+.welcome-content{
+  animation:welcomePop 1s ease;
+}
+
+.welcome-heart{
+  display:block;
+  font-size:65px;
+  animation:heartFloat 1.5s ease-in-out infinite;
+}
+
+.welcome-content h2{
+  margin:12px 0 8px;
+  font-family:Georgia,serif;
+  font-size:30px;
+  background:linear-gradient(90deg,#e84f91,#7565df,#ff8a18);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+
+.welcome-content p{
+  margin:0;
+  color:#725f7d;
+}
+
+@keyframes welcomePop{
+  from{
+    opacity:0;
+    transform:scale(.7) translateY(20px);
+  }
+  to{
+    opacity:1;
+    transform:scale(1) translateY(0);
+  }
+}
+
+@keyframes heartFloat{
+  0%,100%{
+    transform:scale(1) rotate(-5deg);
+  }
+  50%{
+    transform:scale(1.15) rotate(5deg);
+  }
+}
+
+@keyframes welcomeFade{
+  0%,82%{
+    opacity:1;
+    visibility:visible;
+  }
+  100%{
+    opacity:0;
+    visibility:hidden;
+  }
+}
+
+/* =========================
+   HERO
+========================= */
 
 .hero{
   position:relative;
@@ -410,21 +132,25 @@ body{
   border-radius:32px;
 
   background:
-    radial-gradient(circle at 15% 20%,rgba(255,255,255,.98),transparent 27%),
-    radial-gradient(circle at 85% 25%,rgba(255,190,225,.75),transparent 32%),
+    radial-gradient(circle at 15% 20%,rgba(255,255,255,.98),transparent 28%),
+    radial-gradient(circle at 85% 25%,rgba(255,190,225,.78),transparent 32%),
     linear-gradient(135deg,#fff0f7,#f1edff,#fff8df);
 
   border:1px solid rgba(255,255,255,.95);
 
   box-shadow:
     0 20px 50px rgba(100,70,130,.18),
-    0 0 35px rgba(255,180,220,.15);
+    0 0 35px rgba(255,180,220,.16);
+
+  animation:softFloat 6s ease-in-out infinite;
 }
 
 .hero h1{
+  position:relative;
+  z-index:2;
   margin:0 0 12px;
   font-family:Georgia,serif;
-  font-size:42px;
+  font-size:43px;
   line-height:1.1;
 
   background:linear-gradient(
@@ -437,52 +163,27 @@ body{
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
 
-  filter:drop-shadow(
-    0 4px 12px rgba(120,80,150,.20)
-  );
-
   animation:titleGlow 3s ease-in-out infinite;
 }
 
-@keyframes titleGlow{
-  0%,100%{
-    filter:drop-shadow(
-      0 3px 8px rgba(232,79,145,.12)
-    );
-  }
-
-  50%{
-    filter:drop-shadow(
-      0 5px 20px rgba(117,101,223,.35)
-    );
-  }
-}
-
-.tag{
+.hero .tag{
   margin:0;
-  font-size:17px;
   color:#725f7d;
-  letter-spacing:.3px;
+  font-size:17px;
 }
 
 .welcome{
-  margin:12px 0 20px;
-  font-size:16px;
+  margin:13px auto 20px;
+  max-width:600px;
   line-height:1.7;
   color:#594862;
 }
-
-/* ================================
-   DECORATIONS
-================================ */
 
 .floating{
   position:absolute;
   top:12px;
   left:18px;
-  font-size:28px;
-  pointer-events:none;
-
+  font-size:30px;
   animation:floatingFlower 3s ease-in-out infinite;
 }
 
@@ -490,30 +191,42 @@ body{
   0%,100%{
     transform:translateY(0) rotate(-8deg);
   }
-
   50%{
-    transform:translateY(-8px) rotate(8deg);
+    transform:translateY(-9px) rotate(8deg);
   }
 }
 
-/* ================================
-   VVIP EXPLORE BUTTON
-================================ */
+@keyframes titleGlow{
+  0%,100%{
+    filter:drop-shadow(0 3px 8px rgba(232,79,145,.12));
+  }
+  50%{
+    filter:drop-shadow(0 5px 20px rgba(117,101,223,.35));
+  }
+}
+
+@keyframes softFloat{
+  0%,100%{
+    transform:translateY(0);
+  }
+  50%{
+    transform:translateY(-3px);
+  }
+}
+
+/* =========================
+   EXPLORE BUTTON
+========================= */
 
 .explore{
   position:relative;
   overflow:hidden;
-
-  border:0;
+  padding:14px 23px;
   border-radius:22px;
 
-  padding:14px 23px;
-
-  color:#fff;
+  color:white;
   font-size:15px;
   font-weight:800;
-
-  cursor:pointer;
 
   background:
     linear-gradient(
@@ -526,149 +239,140 @@ body{
   background-size:200% 200%;
 
   box-shadow:
-    0 10px 26px rgba(220,70,150,.30),
+    0 10px 27px rgba(220,70,150,.30),
     0 0 20px rgba(255,180,220,.18);
 
   animation:buttonGradient 4s ease infinite;
-
   transition:.25s ease;
-}
-
-@keyframes buttonGradient{
-  0%{
-    background-position:0% 50%;
-  }
-
-  50%{
-    background-position:100% 50%;
-  }
-
-  100%{
-    background-position:0% 50%;
-  }
 }
 
 .explore:hover{
   transform:translateY(-4px) scale(1.04);
 }
 
-/* ================================
-   GENERAL CARDS
-================================ */
-
-.card{
-  background:rgba(255,255,255,.84);
-
-  backdrop-filter:blur(14px);
-  -webkit-backdrop-filter:blur(14px);
-
-  border:1px solid rgba(255,255,255,.85);
-
-  border-radius:27px;
-
-  padding:20px;
-
-  margin:18px 0;
-
-  box-shadow:
-    0 14px 38px rgba(80,50,100,.14);
-
-  transition:
-    transform .25s ease,
-    box-shadow .25s ease;
+.explore::after{
+  content:"";
+  position:absolute;
+  top:0;
+  left:-100%;
+  width:55%;
+  height:100%;
+  background:linear-gradient(
+    90deg,
+    transparent,
+    rgba(255,255,255,.5),
+    transparent
+  );
+  transform:skewX(-20deg);
+  animation:buttonShine 3.5s infinite;
 }
 
-.card:hover{
-  transform:translateY(-2px);
-
-  box-shadow:
-    0 18px 42px rgba(80,50,100,.18);
+@keyframes buttonGradient{
+  0%,100%{
+    background-position:0% 50%;
+  }
+  50%{
+    background-position:100% 50%;
+  }
 }
 
-.section-title{
-  margin:0 0 8px;
-
-  font-size:24px;
-
-  background:
-    linear-gradient(
-      90deg,
-      #e84f91,
-      #7565df
-    );
-
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
+@keyframes buttonShine{
+  0%,55%{
+    left:-100%;
+  }
+  100%{
+    left:150%;
+  }
 }
 
-.muted{
-  color:#76687f;
-  margin:7px 0;
-  line-height:1.6;
-}
-
-/* ================================
-   AUDIO / VIDEO NAVIGATION
-================================ */
+/* =========================
+   MEDIA NAV
+========================= */
 
 .media-nav{
   display:flex;
   justify-content:center;
   align-items:center;
-
   gap:12px;
-
   margin:20px 0;
-
   flex-wrap:wrap;
 }
 
 .media-nav button{
-  min-width:155px;
-
+  min-width:160px;
   padding:14px 20px;
-
-  border:0;
   border-radius:20px;
-
   color:white;
-
   font-size:15px;
   font-weight:800;
-
-  cursor:pointer;
-
-  box-shadow:
-    0 9px 24px rgba(0,0,0,.18);
-
+  box-shadow:0 9px 24px rgba(0,0,0,.18);
   transition:.25s ease;
 }
 
-.media-nav button:first-child{
-  background:
-    linear-gradient(
-      135deg,
-      #ff1493,
-      #ff7a18
-    );
+.audio-nav{
+  background:linear-gradient(135deg,#ff1493,#ff7a18);
 }
 
-.media-nav button:last-child{
-  background:
-    linear-gradient(
-      135deg,
-      #7b2cff,
-      #00a8ff
-    );
+.video-nav{
+  background:linear-gradient(135deg,#7b2cff,#00a8ff);
 }
 
 .media-nav button:hover{
   transform:translateY(-4px) scale(1.04);
 }
 
-/* ================================
+/* =========================
+   GENERAL CARD
+========================= */
+
+.card{
+  margin:18px 0;
+  padding:20px;
+  border-radius:27px;
+
+  background:rgba(255,255,255,.82);
+
+  border:1px solid rgba(255,255,255,.9);
+
+  box-shadow:
+    0 15px 38px rgba(80,50,100,.14);
+
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+
+  transition:.25s ease;
+}
+
+.card:hover{
+  transform:translateY(-2px);
+  box-shadow:
+    0 19px 43px rgba(80,50,100,.18);
+}
+
+.section-title{
+  margin:0 0 8px;
+  font-size:24px;
+
+  background:linear-gradient(
+    90deg,
+    #e84f91,
+    #7565df,
+    #ff8a18
+  );
+
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+
+.muted{
+  margin:7px 0;
+  color:#76687f;
+  line-height:1.6;
+}
+
+/* =========================
    SONG CARDS
-================================ */
+========================= */
 
 .song-card{
   position:relative;
@@ -677,22 +381,21 @@ body{
   background:
     linear-gradient(
       135deg,
-      rgba(255,255,255,.90),
-      rgba(255,242,250,.86),
-      rgba(241,237,255,.90)
+      rgba(255,255,255,.92),
+      rgba(255,242,250,.88),
+      rgba(241,237,255,.92)
     );
 
-  border:1px solid rgba(255,255,255,.90);
+  border:1px solid rgba(255,255,255,.92);
 
   box-shadow:
-    0 13px 36px rgba(100,70,130,.14);
+    0 14px 38px rgba(100,70,130,.14);
 }
 
 .song-card:hover{
   transform:translateY(-5px);
-
   box-shadow:
-    0 20px 45px rgba(100,70,130,.20);
+    0 20px 46px rgba(100,70,130,.20);
 }
 
 .song{
@@ -720,16 +423,12 @@ body{
 }
 
 .cover:hover{
-  transform:
-    scale(1.08)
-    rotate(2deg);
+  transform:scale(1.08) rotate(2deg);
 }
 
 .cover span{
   display:block;
-
   font-size:34px;
-
   animation:coverFloat 2.5s ease-in-out infinite;
 }
 
@@ -737,108 +436,193 @@ body{
   0%,100%{
     transform:translateY(0) rotate(-5deg);
   }
-
   50%{
     transform:translateY(-5px) rotate(5deg);
   }
 }
 
 .cover-one{
-  background:
-    linear-gradient(
-      135deg,
-      #ff7eb3,
-      #9b7cff
-    );
+  background:linear-gradient(135deg,#ff7eb3,#9b7cff);
 }
 
 .cover-two{
-  background:
-    linear-gradient(
-      135deg,
-      #7b61ff,
-      #c084fc
-    );
+  background:linear-gradient(135deg,#7b61ff,#c084fc);
 }
 
 .cover-three{
-  background:
-    linear-gradient(
-      135deg,
-      #ff6b8a,
-      #ffb36b
-    );
+  background:linear-gradient(135deg,#ff6b8a,#ffb36b);
 }
 
 .song h2{
   margin:0 0 5px;
-
   font-family:Georgia,serif;
-
   font-size:19px;
-
   letter-spacing:.2px;
 }
 
 .artist{
-  font-size:13px;
   color:#796b82;
-  letter-spacing:.4px;
+  font-size:13px;
+  letter-spacing:.3px;
 }
 
-/* ================================
-   AUDIO
-================================ */
-
-audio{
+audio,
+video{
+  display:block;
+  width:100%;
   max-width:100%;
 }
 
-.song-card audio{
+audio{
+  margin-top:14px;
   border-radius:14px;
 }
 
-/* ================================
-   ACTION BUTTONS
-================================ */
+/* =========================
+   VIP SONGS
+========================= */
+
+.vip-song{
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255,255,255,.94),
+      rgba(255,247,218,.90),
+      rgba(241,237,255,.94)
+    );
+
+  border:1px solid rgba(212,175,55,.38);
+
+  box-shadow:
+    0 15px 40px rgba(110,70,150,.15),
+    0 0 25px rgba(212,175,55,.08);
+}
+
+.vip-song::before{
+  content:"✦ VIP MEMORY ✦";
+  position:absolute;
+  top:12px;
+  right:12px;
+  z-index:2;
+
+  padding:5px 9px;
+  border-radius:12px;
+
+  font-size:9px;
+  font-weight:800;
+  letter-spacing:1.5px;
+
+  color:#8a6515;
+
+  background:
+    linear-gradient(
+      135deg,
+      #fff8d8,
+      #f6df82
+    );
+
+  box-shadow:
+    0 4px 12px rgba(180,135,35,.18);
+}
+
+.vip-cover{
+  background:
+    linear-gradient(
+      135deg,
+      #c89b2c,
+      #f8df7b,
+      #d4af37
+    );
+
+  box-shadow:
+    0 10px 28px rgba(180,135,35,.30),
+    inset 0 1px 8px rgba(255,255,255,.55);
+
+  border:1px solid rgba(255,255,255,.65);
+}
+
+.vip-cover span{
+  filter:drop-shadow(
+    0 3px 5px rgba(100,70,20,.25)
+  );
+}
+
+.vip-song::after{
+  content:"";
+  position:absolute;
+  top:-60%;
+  left:-80%;
+  width:45%;
+  height:220%;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(255,255,255,.45),
+      transparent
+    );
+
+  transform:rotate(25deg);
+  animation:vipShine 5s ease-in-out infinite;
+
+  pointer-events:none;
+}
+
+@keyframes vipShine{
+  0%,55%{
+    left:-80%;
+  }
+  100%{
+    left:140%;
+  }
+}
+
+.vip-song .like{
+  background:
+    linear-gradient(
+      135deg,
+      #ff4f9a,
+      #ff7a18
+    );
+}
+
+.vip-song .comment{
+  background:
+    linear-gradient(
+      135deg,
+      #7b2cff,
+      #2575fc
+    );
+}
+
+/* =========================
+   BUTTONS
+========================= */
 
 .actions{
   display:flex;
-
   gap:10px;
-
   margin-top:17px;
-
   flex-wrap:wrap;
 }
 
-button{
-  border:0;
-
+.actions button{
+  padding:11px 17px;
   border-radius:999px;
 
-  padding:11px 17px;
-
   color:white;
-
+  font-size:14px;
   font-weight:700;
 
-  font-size:14px;
-
-  cursor:pointer;
+  box-shadow:
+    0 6px 15px rgba(80,50,100,.14);
 
   transition:.18s ease;
-
-  box-shadow:
-    0 5px 14px rgba(80,50,100,.14);
 }
 
-button:hover{
+.actions button:hover{
   transform:translateY(-2px);
-}
-
-button:active{
-  transform:scale(.96);
 }
 
 .like{
@@ -863,40 +647,354 @@ button:active{
   background:
     linear-gradient(
       135deg,
-      #ff5e9b,
-      #ff7bba
+      #ff4f9a,
+      #ff7a18,
+      #8a4dff
     );
+  background-size:200% 200%;
+  animation:postGlow 4s ease infinite;
 }
 
 .like.liked{
-  transform:scale(1.08);
+  animation:heartPop .35s ease;
 }
 
-/* ================================
+@keyframes heartPop{
+  0%{transform:scale(1)}
+  50%{transform:scale(1.18)}
+  100%{transform:scale(1.05)}
+}
+
+@keyframes postGlow{
+  0%,100%{
+    background-position:0% 50%;
+  }
+  50%{
+    background-position:100% 50%;
+  }
+}
+
+/* =========================
+   COMMENTS
+========================= */
+
+#commentBox{
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255,255,255,.90),
+      rgba(255,240,248,.88),
+      rgba(241,237,255,.90)
+    );
+
+  box-shadow:
+    0 16px 40px rgba(100,70,130,.15),
+    0 0 25px rgba(220,150,210,.10);
+}
+
+input,
+textarea{
+  width:100%;
+  margin:7px 0;
+
+  padding:13px;
+
+  border:1px solid #ddd0e5;
+  border-radius:16px;
+
+  font-size:16px;
+
+  background:rgba(255,255,255,.96);
+
+  outline:none;
+}
+
+input:focus,
+textarea:focus{
+  border-color:#b47ee8;
+
+  box-shadow:
+    0 0 0 3px rgba(180,126,232,.13),
+    0 6px 18px rgba(100,70,130,.10);
+}
+
+#commentsList{
+  margin-top:17px;
+}
+
+.comment-item{
+  position:relative;
+
+  margin:10px 0;
+  padding:15px;
+
+  border-radius:18px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255,245,250,.96),
+      rgba(244,241,255,.96)
+    );
+
+  border:1px solid rgba(255,255,255,.92);
+
+  box-shadow:
+    0 8px 22px rgba(100,70,130,.09);
+}
+
+.comment-name{
+  font-weight:800;
+
+  background:
+    linear-gradient(
+      90deg,
+      #e84f91,
+      #7565df
+    );
+
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+
+.comment-text{
+  margin-top:6px;
+  white-space:pre-wrap;
+  line-height:1.5;
+}
+
+/* =========================
+   OWNER LOGIN
+========================= */
+
+#ownerLogin{
+  margin:0 0 22px;
+  padding:16px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255,248,220,.75),
+      rgba(241,237,255,.75)
+    );
+
+  border-radius:20px;
+}
+
+.status{
+  min-height:22px;
+}
+
+/* =========================
+   MEMORY CARD
+========================= */
+
+.memory-card{
+  position:relative;
+  overflow:hidden;
+
+  text-align:center;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255,240,248,.95),
+      rgba(241,237,255,.95),
+      rgba(255,248,225,.94)
+    );
+
+  animation:softFloat 6s ease-in-out infinite;
+}
+
+.memory-icon{
+  display:inline-block;
+  font-size:45px;
+  animation:memoryHeart 2.2s ease-in-out infinite;
+}
+
+.memory-text{
+  line-height:1.8;
+}
+
+.memory-line{
+  margin-top:14px;
+  font-size:24px;
+  letter-spacing:7px;
+}
+
+@keyframes memoryHeart{
+  0%,100%{
+    transform:scale(1) rotate(-4deg);
+  }
+  50%{
+    transform:scale(1.12) rotate(4deg);
+  }
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+  margin-top:30px;
+  padding:22px 10px;
+
+  text-align:center;
+  color:#76687f;
+
+  border-top:1px solid rgba(118,104,127,.16);
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(255,240,248,.5),
+      rgba(241,237,255,.5)
+    );
+
+  border-radius:20px;
+}
+
+/* =========================
+   NOW PLAYING
+========================= */
+
+.now-playing{
+  position:fixed;
+  left:12px;
+  right:12px;
+  bottom:14px;
+
+  z-index:9997;
+
+  display:none;
+  align-items:center;
+  gap:12px;
+
+  padding:12px 15px;
+
+  border-radius:22px;
+
+  background:rgba(255,255,255,.90);
+
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+
+  border:1px solid rgba(255,255,255,.95);
+
+  box-shadow:
+    0 12px 35px rgba(80,50,100,.22);
+}
+
+.now-playing.show{
+  display:flex;
+}
+
+.now-playing-icon{
+  width:42px;
+  height:42px;
+  min-width:42px;
+
+  display:grid;
+  place-items:center;
+
+  border-radius:14px;
+
+  font-size:22px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #ff4f9a,
+      #7565df
+    );
+}
+
+.now-playing-info{
+  min-width:0;
+  flex:1;
+}
+
+.now-playing-label{
+  color:#9a7aaa;
+  font-size:11px;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:1px;
+}
+
+.now-playing-title{
+  color:#4b3858;
+  font-size:14px;
+  font-weight:700;
+
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+/* =========================
+   FLOATING MEMORIES
+========================= */
+
+.memory-float{
+  position:fixed;
+  bottom:-50px;
+
+  z-index:9998;
+
+  pointer-events:none;
+
+  font-size:22px;
+  opacity:0;
+
+  animation:
+    memoryFloat 7s linear forwards;
+}
+
+@keyframes memoryFloat{
+  0%{
+    transform:translateY(0) rotate(0deg) scale(.8);
+    opacity:0;
+  }
+
+  12%{
+    opacity:.75;
+  }
+
+  70%{
+    opacity:.55;
+  }
+
+  100%{
+    transform:
+      translateY(-110vh)
+      rotate(25deg)
+      scale(1.15);
+
+    opacity:0;
+  }
+}
+
+/* =========================
    MOBILE
-================================ */
+========================= */
 
 @media(max-width:520px){
 
   .wrap{
-    padding:
-      12px
-      12px
-      35px;
+    padding:12px 12px 95px;
   }
 
   .hero{
-    padding:
-      32px
-      12px
-      25px;
+    padding:34px 12px 27px;
+    border-radius:27px;
   }
 
   .hero h1{
     font-size:34px;
   }
 
-  .tag{
+  .hero .tag{
     font-size:15px;
   }
 
@@ -933,308 +1031,11 @@ button:active{
 
   .media-nav button{
     min-width:145px;
+    flex:1;
   }
 
   .actions button{
-    padding:
-      10px
-      14px;
-  }
-}
-  /* ===== PART 3 — SONGS & VVIP STYLING ===== */
-
-.song-card{
-  position:relative;
-  overflow:hidden;
-  transition:transform .3s ease,box-shadow .3s ease;
-}
-
-.song-card:hover{
-  transform:translateY(-5px);
-  box-shadow:0 18px 40px rgba(100,70,130,.20);
-}
-
-.song{
-  display:flex;
-  align-items:center;
-  gap:15px;
-}
-
-.cover{
-  width:70px;
-  height:70px;
-  min-width:70px;
-  border-radius:22px;
-  display:grid;
-  place-items:center;
-  font-size:32px;
-  box-shadow:0 10px 25px rgba(130,90,170,.25);
-}
-
-.cover span{
-  font-size:34px;
-  display:block;
-  animation:coverFloat 2.5s ease-in-out infinite;
-}
-
-@keyframes coverFloat{
-  0%,100%{
-    transform:translateY(0) rotate(-5deg);
-  }
-
-  50%{
-    transform:translateY(-5px) rotate(5deg);
-  }
-}
-
-.cover-one{
-  background:linear-gradient(
-    135deg,
-    #ff7eb3,
-    #9b7cff
-  );
-}
-
-.cover-two{
-  background:linear-gradient(
-    135deg,
-    #7b61ff,
-    #c084fc
-  );
-}
-
-.cover-three{
-  background:linear-gradient(
-    135deg,
-    #ff6b8a,
-    #ffb36b
-  );
-}
-
-/* ===== VVIP SONG CARD ===== */
-
-.vip-song{
-  position:relative;
-  overflow:hidden;
-
-  background:
-    linear-gradient(
-      135deg,
-      rgba(255,255,255,.96),
-      rgba(255,244,250,.94),
-      rgba(241,237,255,.96)
-    ) !important;
-
-  border:1px solid rgba(212,175,55,.40) !important;
-
-  box-shadow:
-    0 14px 38px rgba(100,70,130,.16),
-    0 0 28px rgba(212,175,55,.10);
-
-  transition:
-    transform .3s ease,
-    box-shadow .3s ease;
-}
-
-.vip-song:hover{
-  transform:translateY(-6px);
-
-  box-shadow:
-    0 22px 48px rgba(100,70,130,.22),
-    0 0 35px rgba(212,175,55,.16);
-}
-
-.vip-song::before{
-  content:"✦ VVIP MEMORY ✦";
-
-  position:absolute;
-  top:12px;
-  right:12px;
-  z-index:2;
-
-  padding:5px 9px;
-  border-radius:12px;
-
-  font-size:9px;
-  font-weight:800;
-  letter-spacing:1.5px;
-
-  color:#8a6515;
-
-  background:
-    linear-gradient(
-      135deg,
-      #fff8d8,
-      #f6df82
-    );
-
-  box-shadow:
-    0 4px 12px rgba(180,135,35,.20);
-}
-
-.vip-song::after{
-  content:"";
-
-  position:absolute;
-  top:-60%;
-  left:-80%;
-
-  width:45%;
-  height:220%;
-
-  background:
-    linear-gradient(
-      90deg,
-      transparent,
-      rgba(255,255,255,.48),
-      transparent
-    );
-
-  transform:rotate(25deg);
-
-  animation:
-    vvipShine 5s ease-in-out infinite;
-
-  pointer-events:none;
-}
-
-@keyframes vvipShine{
-  0%,55%{
-    left:-80%;
-  }
-
-  100%{
-    left:140%;
-  }
-}
-
-.vip-cover{
-  background:
-    linear-gradient(
-      135deg,
-      #c89b2c,
-      #f8df7b,
-      #d4af37
-    ) !important;
-
-  box-shadow:
-    0 10px 28px rgba(180,135,35,.32),
-    inset 0 1px 8px rgba(255,255,255,.55);
-
-  border:1px solid rgba(255,255,255,.70);
-}
-
-.vip-cover span{
-  font-size:34px;
-  display:block;
-
-  animation:
-    vvipFloat 2.4s ease-in-out infinite;
-
-  filter:
-    drop-shadow(
-      0 3px 5px rgba(100,70,20,.25)
-    );
-}
-
-@keyframes vvipFloat{
-  0%,100%{
-    transform:translateY(0) scale(1);
-  }
-
-  50%{
-    transform:translateY(-5px) scale(1.08);
-  }
-}
-
-.vip-song audio{
-  border-radius:14px;
-
-  filter:
-    drop-shadow(
-      0 5px 10px rgba(100,70,130,.10)
-    );
-}
-
-/* ===== SONG BUTTONS ===== */
-
-.actions{
-  display:flex;
-  gap:10px;
-  margin-top:17px;
-  flex-wrap:wrap;
-}
-
-.like{
-  background:
-    linear-gradient(
-      135deg,
-      #ff4f9a,
-      #ff7a18
-    ) !important;
-
-  color:white !important;
-
-  box-shadow:
-    0 7px 18px rgba(255,79,154,.22);
-}
-
-.comment{
-  background:
-    linear-gradient(
-      135deg,
-      #7b2cff,
-      #2575fc
-    ) !important;
-
-  color:white !important;
-
-  box-shadow:
-    0 7px 18px rgba(80,80,220,.20);
-}
-
-.like:hover,
-.comment:hover{
-  transform:
-    translateY(-3px)
-    scale(1.03);
-}
-
-.like.liked{
-  animation:
-    heartPop .35s ease;
-}
-
-@keyframes heartPop{
-  0%{
-    transform:scale(1);
-  }
-
-  50%{
-    transform:scale(1.18);
-  }
-
-  100%{
-    transform:scale(1.05);
-  }
-}
-
-/* ===== MOBILE VVIP ===== */
-
-@media(max-width:520px){
-
-  .song{
-    align-items:flex-start;
-  }
-
-  .cover{
-    width:62px;
-    height:62px;
-    min-width:62px;
-  }
-
-  .vip-song{
-    border-radius:23px !important;
+    padding:10px 14px;
   }
 
   .vip-song::before{
@@ -1242,703 +1043,44 @@ button:active{
     padding:4px 7px;
   }
 
-  .actions button{
-    padding:10px 14px;
-  }
-}/* ===== PART 4 — HERO, COMMENTS & MEMORY ===== */
-
-.hero{
-  position:relative;
-  overflow:hidden;
-
-  background:
-    radial-gradient(
-      circle at 15% 20%,
-      rgba(255,255,255,.96),
-      transparent 25%
-    ),
-    radial-gradient(
-      circle at 85% 30%,
-      rgba(255,190,225,.78),
-      transparent 30%
-    ),
-    linear-gradient(
-      135deg,
-      #fff0f7,
-      #f1edff,
-      #fff8df
-    ) !important;
-
-  border:1px solid rgba(255,255,255,.92);
-
-  box-shadow:
-    0 18px 45px rgba(100,70,130,.16),
-    0 0 35px rgba(255,180,220,.12);
-}
-
-.hero h1{
-  animation:titleGlow 3s ease-in-out infinite;
-}
-
-@keyframes titleGlow{
-  0%,100%{
-    filter:drop-shadow(
-      0 3px 8px rgba(232,79,145,.12)
-    );
+  .welcome-content h2{
+    font-size:25px;
   }
 
-  50%{
-    filter:drop-shadow(
-      0 5px 18px rgba(117,101,223,.30)
-    );
-  }
-}
-
-/* ===== EXPLORE BUTTON ===== */
-
-.explore{
-  position:relative;
-  overflow:hidden;
-
-  margin-top:12px;
-
-  padding:13px 22px !important;
-
-  border-radius:20px !important;
-
-  background:
-    linear-gradient(
-      135deg,
-      #ff1493,
-      #ff7a18,
-      #7b2cff
-    ) !important;
-
-  background-size:200% 200% !important;
-
-  box-shadow:
-    0 9px 25px rgba(220,70,150,.28),
-    0 0 18px rgba(255,180,220,.20) !important;
-
-  animation:
-    buttonGradient 4s ease infinite;
-}
-
-@keyframes buttonGradient{
-  0%{
-    background-position:0% 50%;
+  .welcome-heart{
+    font-size:55px;
   }
 
-  50%{
-    background-position:100% 50%;
-  }
-
-  100%{
-    background-position:0% 50%;
+  .now-playing{
+    left:9px;
+    right:9px;
+    bottom:10px;
   }
 }
-
-.explore::after{
-  content:"";
-
-  position:absolute;
-  top:0;
-  left:-100%;
-
-  width:60%;
-  height:100%;
-
-  background:
-    linear-gradient(
-      90deg,
-      transparent,
-      rgba(255,255,255,.45),
-      transparent
-    );
-
-  transform:skewX(-20deg);
-
-  animation:
-    buttonShine 3.5s infinite;
-}
-
-@keyframes buttonShine{
-  0%,55%{
-    left:-100%;
-  }
-
-  100%{
-    left:150%;
-  }
-}
-
-/* ===== MEDIA NAVIGATION ===== */
-
-.media-nav{
-  position:relative;
-  z-index:3;
-}
-
-.media-nav button{
-  position:relative;
-  overflow:hidden;
-
-  min-width:155px !important;
-
-  border-radius:20px !important;
-
-  font-size:15px !important;
-  font-weight:800 !important;
-
-  transition:
-    transform .25s ease,
-    box-shadow .25s ease !important;
-}
-
-.media-nav button:first-child{
-  background:
-    linear-gradient(
-      135deg,
-      #ff1493,
-      #ff7a18
-    ) !important;
-
-  box-shadow:
-    0 9px 24px rgba(255,20,147,.25) !important;
-}
-
-.media-nav button:last-child{
-  background:
-    linear-gradient(
-      135deg,
-      #7b2cff,
-      #00a8ff
-    ) !important;
-
-  box-shadow:
-    0 9px 24px rgba(70,90,230,.25) !important;
-}
-
-.media-nav button:hover{
-  transform:
-    translateY(-4px)
-    scale(1.04) !important;
-}
-
-/* ===== SECTION TITLES ===== */
-
-.section-title{
-  background:
-    linear-gradient(
-      90deg,
-      #e84f91,
-      #7565df
-    );
-
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-}
-
-/* ===== COMMENT BOX ===== */
-
-#commentBox{
-  position:relative;
-  overflow:hidden;
-
-  background:
-    linear-gradient(
-      135deg,
-      rgba(255,255,255,.90),
-      rgba(255,240,248,.90),
-      rgba(241,237,255,.90)
-    ) !important;
-
-  border:1px solid rgba(255,255,255,.92) !important;
-
-  box-shadow:
-    0 16px 40px rgba(100,70,130,.15),
-    0 0 25px rgba(220,150,210,.10);
-}
-
-#commentBox input,
-#commentBox textarea{
-  border:1px solid rgba(180,145,210,.35);
-
-  box-shadow:
-    0 5px 15px rgba(100,70,130,.06);
-}
-
-#commentBox input:focus,
-#commentBox textarea:focus{
-  border-color:#b47ee8;
-
-  box-shadow:
-    0 0 0 3px rgba(180,126,232,.13),
-    0 6px 18px rgba(100,70,130,.10);
-}
-
-/* ===== POST BUTTON ===== */
-
-.post{
-  background:
-    linear-gradient(
-      135deg,
-      #ff4f9a,
-      #ff7a18,
-      #8a4dff
-    ) !important;
-
-  background-size:200% 200% !important;
-
-  box-shadow:
-    0 8px 22px rgba(255,79,154,.25) !important;
-
-  animation:
-    postGlow 4s ease infinite;
-}
-
-@keyframes postGlow{
-  0%,100%{
-    background-position:0% 50%;
-  }
-
-  50%{
-    background-position:100% 50%;
-  }
-}
-
-/* ===== COMMENTS ===== */
-
-.comment-item{
-  position:relative;
-
-  background:
-    linear-gradient(
-      135deg,
-      rgba(255,245,250,.96),
-      rgba(244,241,255,.96)
-    ) !important;
-
-  border:1px solid rgba(255,255,255,.92) !important;
-
-  box-shadow:
-    0 8px 22px rgba(100,70,130,.09);
-
-  transition:.25s ease;
-}
-
-.comment-item:hover{
-  transform:translateY(-3px);
-
-  box-shadow:
-    0 10px 24px rgba(100,70,130,.12);
-}
-
-.comment-name{
-  background:
-    linear-gradient(
-      90deg,
-      #e84f91,
-      #7565df
-    );
-
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-}
-
-.comment-text{
-  margin-top:6px;
-  white-space:pre-wrap;
-  line-height:1.5;
-}
-
-/* ===== MEMORY CARD ===== */
-
-.memory-card{
-  position:relative;
-  overflow:hidden;
-
-  background:
-    linear-gradient(
-      135deg,
-      rgba(255,240,248,.95),
-      rgba(241,237,255,.95),
-      rgba(255,248,225,.93)
-    ) !important;
-
-  border:1px solid rgba(255,255,255,.96) !important;
-
-  box-shadow:
-    0 16px 40px rgba(100,70,130,.14),
-    0 0 25px rgba(255,180,210,.10);
-}
-
-.memory-icon{
-  display:inline-block;
-
-  animation:
-    memoryHeart 2.2s ease-in-out infinite;
-}
-
-@keyframes memoryHeart{
-  0%,100%{
-    transform:scale(1) rotate(-4deg);
-  }
-
-  50%{
-    transform:scale(1.12) rotate(4deg);
-  }
-}
-
-.memory-text{
-  line-height:1.7;
-}
-
-/* ===== FOOTER ===== */
-
-footer{
-  margin-top:28px;
-  padding:22px 10px;
-
-  border-top:
-    1px solid rgba(118,104,127,.16);
-
-  background:
-    linear-gradient(
-      90deg,
-      rgba(255,240,248,.45),
-      rgba(241,237,255,.45)
-    );
-
-  border-radius:20px;
-}
-
-/* ===== MOBILE FINISH ===== */
-
-@media(max-width:520px){
-
-  .hero h1{
-    font-size:33px;
-  }
-
-  .explore{
-    width:100%;
-  }
-
-  .media-nav{
-    gap:10px !important;
-  }
-
-  .media-nav button{
-    min-width:145px !important;
-  }
-}/* =================================
-   PART 5 — POLISH & RESPONSIVE
-================================= */
-
-/* SOFT FLOATING EFFECT */
-
-.hero,
-.memory-card,
-#commentBox{
-  animation:softFloat 6s ease-in-out infinite;
-}
-
-@keyframes softFloat{
-  0%,100%{
-    transform:translateY(0);
-  }
-
-  50%{
-    transform:translateY(-3px);
-  }
-}
-
-
-/* CARD POLISH */
-
-.memory-card,
-.comment-item,
-.song-card{
-  will-change:transform;
-}
-
-.memory-card:hover{
-  transform:translateY(-5px) scale(1.01);
-}
-
-
-/* BUTTON PRESS */
-
-button,
-.explore,
-.post{
-  -webkit-tap-highlight-color:transparent;
-}
-
-button:active,
-.explore:active,
-.post:active{
-  transform:scale(.97)!important;
-}
-
-
-/* INPUT PLACEHOLDER */
-
-#commentBox input::placeholder,
-#commentBox textarea::placeholder{
-  color:rgba(90,70,100,.52);
-}
-
-
-/* COMMENT LIST */
-
-#comments{
-  display:flex;
-  flex-direction:column;
-  gap:12px;
-}
-
-
-/* SCROLLBAR */
-
-::-webkit-scrollbar{
-  width:7px;
-}
-
-::-webkit-scrollbar-track{
-  background:rgba(241,237,255,.55);
-}
-
-::-webkit-scrollbar-thumb{
-  background:linear-gradient(
-    180deg,
-    #ff7ab8,
-    #8067df
-  );
-  border-radius:20px;
-}
-
-
-/* TEXT SELECTION */
-
-::selection{
-  background:rgba(232,79,145,.22);
-}
-
-
-/* FADE IN */
-
-.media-nav,
-footer{
-  animation:fadeUp .8s ease both;
-}
-
-@keyframes fadeUp{
-  from{
-    opacity:0;
-    transform:translateY(14px);
-  }
-
-  to{
-    opacity:1;
-    transform:translateY(0);
-  }
-}
-
-
-/* MOBILE POLISH */
-
-@media(max-width:520px){
-
-  body{
-    padding-left:10px;
-    padding-right:10px;
-  }
-
-  .hero{
-    border-radius:24px!important;
-  }
-
-  .hero h1{
-    line-height:1.12;
-  }
-
-  .media-nav{
-    display:flex;
-    flex-wrap:wrap;
-    justify-content:center;
-  }
-
-  .media-nav button{
-    flex:1 1 140px;
-  }
-
-  #commentBox{
-    border-radius:22px!important;
-  }
-
-  #commentBox input,
-  #commentBox textarea{
-    width:100%;
-    box-sizing:border-box;
-  }
-
-  .memory-card{
-    border-radius:22px!important;
-  }
-
-  footer{
-    font-size:13px;
-  }
-}
-
-
-/* REDUCE MOTION */
-
-@media(prefers-reduced-motion:reduce){
-
-  *,
-  *::before,
-  *::after{
-    animation-duration:.01ms!important;
-    animation-iteration-count:1!important;
-    scroll-behavior:auto!important;
-    transition-duration:.01ms!important;
-  }
-}/* =================================
-   PART 6 — FINAL VVIP POLISH
-================================= */
-
-/* GLASS EFFECT */
-
-.hero,
-#commentBox,
-.memory-card,
-.comment-item{
-  backdrop-filter:blur(12px);
-  -webkit-backdrop-filter:blur(12px);
-}
-
-
-/* MEMORY HEART */
-
-.memory-card{
-  position:relative;
-  overflow:hidden;
-}
-
-.memory-card::before{
-  content:"♥";
-  position:absolute;
-  right:18px;
-  top:12px;
-  font-size:30px;
-  color:#e84f91;
-  opacity:.12;
-  pointer-events:none;
-
-  animation:floatingHeart 3s ease-in-out infinite;
-}
-
-@keyframes floatingHeart{
-  0%,100%{
-    transform:translateY(0) rotate(-8deg);
-  }
-
-  50%{
-    transform:translateY(-8px) rotate(8deg);
-  }
-}
-
-
-/* COMMENT ANIMATION */
-
-.comment-item{
-  animation:commentAppear .45s ease both;
-}
-
-@keyframes commentAppear{
-  from{
-    opacity:0;
-    transform:translateY(8px);
-  }
-
-  to{
-    opacity:1;
-    transform:translateY(0);
-  }
-}
-
-
-/* ACCESSIBILITY */
-
-button:focus-visible,
-input:focus-visible,
-textarea:focus-visible{
-  outline:3px solid rgba(123,44,255,.22);
-  outline-offset:3px;
-}
-
-
-/* IMAGE SAFETY */
-
-img{
-  max-width:100%;
-  height:auto;
-}
-
-
-/* LINK SAFETY */
-
-a{
-  -webkit-tap-highlight-color:transparent;
-}
-
-
-/* FINAL MOBILE SAFETY */
-
-@media(max-width:520px){
-
-  .hero,
-  #commentBox,
-  .memory-card,
-  .comment-item{
-    max-width:100%;
-    box-sizing:border-box;
-  }
-
-  .hero h1{
-    word-break:normal;
-    overflow-wrap:anywhere;
-  }
-
-  textarea{
-    min-height:110px;
-    resize:vertical;
-  }
-
-  button{
-    touch-action:manipulation;
-  }
-}
-
-
-/* FINAL CLEANUP */
-
-*{
-  box-sizing:border-box;
-}
-
-body{
-  min-height:100vh;
-}</style>
-
-</head>
-
+</style>
 </head>
 
 <body>
+
+<!-- WELCOME -->
+<div class="welcome-screen">
+  <div class="welcome-content">
+    <span class="welcome-heart">💖</span>
+    <h2>Welcome to Aromatic Memories</h2>
+    <p>Where songs become memories… 🌸🎵</p>
+  </div>
+</div>
+
+<!-- NOW PLAYING -->
+<div class="now-playing" id="nowPlaying">
+  <div class="now-playing-icon">🎵</div>
+  <div class="now-playing-info">
+    <div class="now-playing-label">Now Playing</div>
+    <div class="now-playing-title" id="nowPlayingTitle">
+      Aromatic Memories
+    </div>
+  </div>
+</div>
 
 <div class="wrap">
 
@@ -1950,327 +1092,1058 @@ body{
     <h1>💖 Aromatic Memories 💖</h1>
 
     <p class="tag">
-      Beautiful moments, favorite songs & precious memories ✨
+      My Music • My Mood • My Memories ✨
     </p>
 
     <p class="welcome">
-      Welcome to my little world of memories, music and feelings. ❤️
+      Some songs are not just songs… they are memories. ❤️
     </p>
 
-    <button class="explore" onclick="document.getElementById('media').scrollIntoView({behavior:'smooth'})">
-      ✨ Explore Memories ✨
+    <button
+      class="explore"
+      type="button"
+      onclick="document.getElementById('musicSection').scrollIntoView({behavior:'smooth'})">
+      ✨ Explore My Memories ✨
     </button>
 
   </section>
 
-  <!-- MEDIA -->
-  <section class="card" id="media">
+  <!-- NAVIGATION -->
+  <div class="media-nav">
 
-    <h2 class="section-title">🎵 My Favorite Songs</h2>
+    <button
+      class="audio-nav"
+      type="button"
+      onclick="document.getElementById('audioSection').scrollIntoView({behavior:'smooth'})">
+      🎵 Audio Memories
+    </button>
+
+    <button
+      class="video-nav"
+      type="button"
+      onclick="document.getElementById('videoSection').scrollIntoView({behavior:'smooth'})">
+      🎬 Video Memories
+    </button>
+
+  </div>
+
+  <!-- MUSIC HEADING -->
+  <section class="card music-section" id="musicSection">
+
+    <h2 class="section-title">
+      🎵 My Favorite Songs
+    </h2>
 
     <p class="muted">
       Listen to the songs that hold special memories. 💕
     </p>
 
-    <div class="media-nav">
-      <button type="button">🎵 Songs</button>
-      <button type="button">🎬 Memories</button>
-    </div>
-
-  </section>   <!-- SONGS -->
-
-  <section class="card song-card">
-
-    <div class="song">
-
-      <div class="cover cover-one">
-        <span>🎶</span>
-      </div>
-
-      <div>
-        <h2>Jab Hum Jawan Hongy</h2>
-        <div class="artist">❤️ A Special Memory</div>
-      </div>
-
-    </div>
-
-    <br>
-
-    <audio controls preload="none">
-      <source src="" type="audio/mpeg">
-      Your browser does not support audio.
-    </audio>
-
-    <div class="actions">
-      <button class="like" type="button" onclick="this.classList.toggle('liked')">
-        ❤️ Like
-      </button>
-
-      <button class="comment" type="button" onclick="document.getElementById('commentBox').scrollIntoView({behavior:'smooth'})">
-        💬 Comment
-      </button>
-    </div>
-
   </section>
 
+  <!-- SONGS AUTOMATICALLY LOAD HERE -->
+  <div id="songsContainer"></div>
 
-  <section class="card song-card">
+  <!-- VIDEO -->
+  <section class="card music-section" id="videoSection">
 
-    <div class="song">
+    <h2 class="section-title">
+      🎬 My Video Memories
+    </h2>
 
-      <div class="cover cover-two">
-        <span>🎵</span>
-      </div>
-
-      <div>
-        <h2>Bichhran Bhi Zaroori Tha</h2>
-        <div class="artist">💜 A Heartfelt Memory</div>
-      </div>
-
-    </div>
-
-    <br>
-
-    <audio controls preload="none">
-      <source src="" type="audio/mpeg">
-      Your browser does not support audio.
-    </audio>
-
-    <div class="actions">
-      <button class="like" type="button" onclick="this.classList.toggle('liked')">
-        ❤️ Like
-      </button>
-
-      <button class="comment" type="button" onclick="document.getElementById('commentBox').scrollIntoView({behavior:'smooth'})">
-        💬 Comment
-      </button>
-    </div>
+    <p class="muted">
+      My favorite video songs, memories and feelings. 💕
+    </p>
 
   </section>
-
-
-  <section class="card song-card">
-
-    <div class="song">
-
-      <div class="cover cover-three">
-        <span>🎼</span>
-      </div>
-
-      <div>
-        <h2>Chal Kahen Chalen Sajna</h2>
-        <div class="artist">💗 Pyaar Yahan Karna Hai</div>
-      </div>
-
-    </div>
-
-    <br>
-
-    <audio controls preload="none">
-      <source src="" type="audio/mpeg">
-      Your browser does not support audio.
-    </audio>
-
-    <div class="actions">
-      <button class="like" type="button" onclick="this.classList.toggle('liked')">
-        ❤️ Like
-      </button>
-
-      <button class="comment" type="button" onclick="document.getElementById('commentBox').scrollIntoView({behavior:'smooth'})">
-        💬 Comment
-      </button>
-    </div>
-
-  </section>
-
-
-  <!-- VVIP MEMORY -->
 
   <section class="card song-card vip-song">
 
     <div class="song">
 
       <div class="cover vip-cover">
-        <span>👑</span>
+        <span>🎬</span>
       </div>
 
       <div>
-        <h2>✨ VVIP Memory ✨</h2>
-        <div class="artist">Aromatic Memories</div>
+        <h2>Dil Ki Lagi</h2>
+        <div class="artist">
+          New Hindi Song • Yash • Kiara Advani
+        </div>
       </div>
 
     </div>
 
-    <p class="muted">
-      Some memories are too precious to be ordinary. 💛
-    </p>
+    <video
+      controls
+      playsinline
+      preload="metadata"
+      style="width:100%;margin-top:14px;border-radius:14px;">
+
+      <source
+        src="https://napgkwuhjfefpnxwkngc.supabase.co/storage/v1/object/public/Music/Video%20songs/New%20Song%202026%20%20New%20Hindi%20Song%20%20Dil%20Ki%20Lagi%20%20Yash%20%20Kiara%20Advani%20%20Bollywood%20Romant.mp4"
+        type="video/mp4">
+
+      Your browser does not support video playback.
+
+    </video>
+
+    <div class="actions">
+
+      <button
+        class="like"
+        data-song="Dil Ki Lagi">
+
+        ❤️ Like <span class="like-count">0</span>
+
+      </button>
+
+      <button
+        class="comment"
+        type="button"
+        onclick="document.getElementById('commentBox').scrollIntoView({behavior:'smooth'})">
+
+        💬 Comment
+
+      </button>
+
+    </div>
 
   </section>
-  <!-- COMMENTS -->
 
+  <!-- COMMENTS -->
   <section class="card" id="commentBox">
 
-    <h2 class="section-title">💬 Share Your Memory</h2>
+    <!-- OWNER LOGIN -->
+    <div id="ownerLogin">
 
-    <p class="muted">
-      Leave a little message for Aromatic Memories. ❤️
-    </p>
+      <h2 class="section-title">
+        🔐 Owner Login
+      </h2>
+
+      <input
+        id="ownerEmail"
+        type="email"
+        placeholder="Owner email"
+        autocomplete="email">
+
+      <input
+        id="ownerPassword"
+        type="password"
+        placeholder="Owner password"
+        autocomplete="current-password">
+
+      <button
+        class="post"
+        id="loginBtn"
+        type="button">
+        Login
+      </button>
+
+      <button
+        class="comment"
+        id="logoutBtn"
+        type="button"
+        style="display:none;">
+        Logout
+      </button>
+
+      <p
+        id="loginStatus"
+        class="status muted">
+      </p>
+
+    </div>
+
+    <!-- COMMENT FORM -->
+    <h2 class="section-title">
+      💬 Leave a Comment
+    </h2>
 
     <input
-      id="nameInput"
-      type="text"
+      id="name"
       placeholder="Your name"
-      maxlength="50"
-    >
+      autocomplete="name">
 
     <textarea
-      id="commentInput"
-      placeholder="Write your beautiful message..."
-      maxlength="500"
-      rows="5"
-    ></textarea>
+      id="comment"
+      rows="3"
+      placeholder="Write something..."></textarea>
 
-    <button class="post" id="postComment" type="button">
+    <button
+      class="post"
+      id="postBtn"
+      type="button">
       💖 Post Comment
     </button>
+
+    <p
+      id="status"
+      class="status muted">
+    </p>
 
     <div id="commentsList"></div>
 
   </section>
 
-
   <!-- MEMORY -->
-
   <section class="card memory-card">
 
-    <div class="memory-icon">💖</div>
+    <div class="memory-icon">
+      💌
+    </div>
 
-    <h2 class="section-title">Aromatic Memories</h2>
+    <h2 class="section-title">
+      A Little Piece of My Heart
+    </h2>
 
     <p class="memory-text">
-      Every song has a story, every moment has a feeling,
-      and some memories stay with us forever. ✨
+      Some moments become memories, some songs become feelings,
+      and some people stay in our hearts forever. ❤️
     </p>
 
-    <p class="memory-text">
-      Keep smiling, keep loving, and keep making beautiful memories. 🌸
-    </p>
+    <div class="memory-line">
+      🌸 🎵 ❤️ 🎵 🌸
+    </div>
 
   </section>
 
-
-  <!-- FOOTER -->
-
   <footer>
-    Made with ❤️ for beautiful memories
-    <br>
-    © Aromatic Memories
+    Made with ❤️ for Aromatic Memories
   </footer>
+
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 <script>
-/* ===== AROMATIC MEMORIES — BASIC FUNCTIONALITY ===== */
 
-document.addEventListener("DOMContentLoaded", function(){
+/* ==========================================
+   SUPABASE
+========================================== */
 
-  const nameInput = document.getElementById("nameInput");
-  const commentInput = document.getElementById("commentInput");
-  const postButton = document.getElementById("postComment");
-  const commentsList = document.getElementById("commentsList");
+const SUPABASE_URL =
+  "https://napgkwuhjfefpnxwkngc.supabase.co";
 
-  /* LIKE BUTTONS */
+const SUPABASE_PUBLISHABLE_KEY =
+  "sb_publishable_rgYS1XVqzo1tC9nbzIUJtA_uBcnK9b2";
 
-  document.querySelectorAll(".like").forEach(function(button){
+const supabaseClient =
+  window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_PUBLISHABLE_KEY
+  );
 
-    button.addEventListener("click", function(){
 
-      this.classList.toggle("liked");
+/* ==========================================
+   SONG LIST
+   SONGS AUTOMATICALLY GENERATE
+========================================== */
 
-      if(this.classList.contains("liked")){
-        this.innerHTML = "💖 Liked";
-      }else{
-        this.innerHTML = "❤️ Like";
-      }
+const songs = [
 
-    });
+  {
+    title:"Jab Hum Jawan Hongy",
+    artist:"Aromatic Memories",
+    icon:"🌸",
+    cover:"cover-one",
+    vip:false,
+    url:"https://napgkwuhjfefpnxwkngc.supabase.co/storage/v1/object/public/Music/Jab%20Hum%20Jawan%20Honge%20Jhankar%20HD,%20Betaab1983%20Lata%20Mangeshkar,%20Shabbir%20Kumar.mp3"
+  },
+
+  {
+    title:"Bichhran Bhi Zaroori Tha",
+    artist:"Rahat Fateh Ali Khan",
+    icon:"💜",
+    cover:"cover-two",
+    vip:false,
+    url:"https://napgkwuhjfefpnxwkngc.supabase.co/storage/v1/object/public/Music/Zaroori%20Tha%20-%20Rahat%20Fateh%20Ali%20Khan%20-%20Virsa%20Heritage%20Revived.mp3"
+  },
+
+  {
+    title:"Chal Kahen Chalen Sajna",
+    artist:"Pyar Yahan Karna Hai Mana",
+    icon:"🌹",
+    cover:"cover-three",
+    vip:false,
+    url:"https://napgkwuhjfefpnxwkngc.supabase.co/storage/v1/object/public/Music/Chal%20Kahi%20Chale%20Sajna%20%20Suresh%20Wadkar%20%20Muqaddar%201996%20HD%20Songs%20%20Mithun%20Chakraborty,%20Ayesha%20Jhulka.mp3"
+  },
+
+  {
+    title:"Kaisi Teri Khudgharzi",
+    artist:"Rahat Fateh Ali Khan • OST",
+    icon:"👑",
+    vip:true,
+    url:"https://napgkwuhjfefpnxwkngc.supabase.co/storage/v1/object/public/Music/Kaisi%20Teri%20Khudgharzi%20OST%20%20Without%20Dialogues%20%20Rahat%20Fateh%20Ali%20Khan%20%20Danish%20Taimoor%20%20ARY%20Digtial.mp3"
+  },
+
+  {
+    title:"Dil Mang Raha Hai Mohlat",
+    artist:"Special Love Story • Hindi Song",
+    icon:"💎",
+    vip:true,
+    url:"https://napgkwuhjfefpnxwkngc.supabase.co/storage/v1/object/public/Music/Dil%20Mang%20Raha%20Hai%20Mohlat%20%20Special%20Love%20Story%20%20Hindi%20Songs%20%20Dekha%20Hai%20Jab%20Se%20Tumko%20%20Hit%20Song%202023.mp3"
+  },
+
+  {
+    title:"Kisi Se Tum Pyar Karo",
+    artist:"Kumar Sanu • Andaaz 2003",
+    icon:"💖",
+    vip:true,
+    url:"https://napgkwuhjfefpnxwkngc.supabase.co/storage/v1/object/public/Music/Kisi%20Se%20Tum%20Pyar%20Karo%20%20Akshay%20Kumar%20%20Lara%20Dutta%20%20Andaaz%202003%20%20Kumar%20Sanu%20%20Dard%20Bhare%20Gaane.mp3"
+  },
+
+  {
+    title:"Kiska Hai Ye Tumko Intezar",
+    artist:"Main Hoon Na • Sonu Nigam",
+    icon:"💙",
+    vip:true,
+    url:"https://napgkwuhjfefpnxwkngc.supabase.co/storage/v1/object/public/Music/MAIN%20HOON%20NA.mp3"
+  },
+
+  {
+    title:"Mann Mast Malang",
+    artist:"OST • Danish Taimoor • Sahar Hashmi",
+    icon:"💜",
+    vip:true,
+    url:"https://napgkwuhjfefpnxwkngc.supabase.co/storage/v1/object/public/Music/Mann%20Mast%20Malang%20%20OST%20%20Sound%20Track%20%20Danish%20Taimoor%20%20Sahar%20Hashmi%20%20Khalid%20Khan%20%20Saba%20Butt.mp3"
+  },
+
+  {
+    title:"Meri Zindagi Hai Tu",
+    artist:"OST • Asim Azhar • Sabri Sisters",
+    icon:"💗",
+    vip:true,
+    url:"https://napgkwuhjfefpnxwkngc.supabase.co/storage/v1/object/public/Music/MERI%20ZINDAGI%20HAI%20TU%20%20OST%20%20ASIM%20AZHAR%20%20SABRI%20SISTERS%20%20ARY%20DIGITAL.mp3"
+  },
+
+  {
+    title:"Pyar Jhutha Sahi",
+    artist:"Farheen • Ronit Roy",
+    icon:"💔",
+    vip:true,
+    url:"https://napgkwuhjfefpnxwkngc.supabase.co/storage/v1/object/public/Music/Pyar%20Jhutha%20Sahi%20Duniya%20Ko%20Dikhane%20Aaja%204K%20%20Farheen%20%20Ronit%20Roy%20%20Hindi%20Dard%20Bhare%20Songs.mp3"
+  },
+
+  {
+    title:"Lo Maan Liya",
+    artist:"Arijit Singh • Lyrics",
+    icon:"💜",
+    vip:true,
+    url:"https://napgkwuhjfefpnxwkngc.supabase.co/storage/v1/object/public/Music/Lo%20maan%20liya%20lyrics%20%20Arijith%20shing%20%20lo%20maan%20liya%20humne%20song%20lyrics.mp3"
+  },
+
+  {
+    title:"Phir Bhi Tumko Chaahunga",
+    artist:"Aromatic Memories • Love Song",
+    icon:"❤️",
+    vip:true,
+    url:"https://napgkwuhjfefpnxwkngc.supabase.co/storage/v1/object/public/Music/Phir%20Bhi%20Tumko%20Chaahunga.mp3"
+  }
+
+];
+
+
+/* ==========================================
+   AUTOMATIC SONG CARD GENERATOR
+========================================== */
+
+const songsContainer =
+  document.getElementById("songsContainer");
+
+songs.forEach(function(song){
+
+  const card =
+    document.createElement("section");
+
+  card.className =
+    "card song-card" +
+    (song.vip ? " vip-song" : "");
+
+  const coverClass =
+    song.vip ? "vip-cover" : song.cover;
+
+  card.innerHTML = `
+
+    <div class="song">
+
+      <div class="cover ${coverClass}">
+        <span>${song.icon}</span>
+      </div>
+
+      <div>
+
+        <h2>${song.title}</h2>
+
+        <div class="artist">
+          ${song.artist}
+        </div>
+
+      </div>
+
+    </div>
+
+    <audio
+      controls
+      preload="metadata">
+
+      <source
+        src="${song.url}"
+        type="audio/mpeg">
+
+      Your browser does not support audio.
+
+    </audio>
+
+    <div class="actions">
+
+      <button
+        class="like"
+        data-song="${song.title}"
+        type="button">
+
+        ❤️ Like
+        <span class="like-count">0</span>
+
+      </button>
+
+      <button
+        class="comment"
+        type="button"
+        onclick="document.getElementById('commentBox').scrollIntoView({behavior:'smooth'})">
+
+        💬 Comment
+
+      </button>
+
+    </div>
+  `;
+
+  songsContainer.appendChild(card);
+
+});
+
+
+/* ==========================================
+   COMMENT ELEMENTS
+========================================== */
+
+const nameInput =
+  document.getElementById("name");
+
+const commentInput =
+  document.getElementById("comment");
+
+const postBtn =
+  document.getElementById("postBtn");
+
+const statusEl =
+  document.getElementById("status");
+
+const commentsList =
+  document.getElementById("commentsList");
+
+const ownerEmail =
+  document.getElementById("ownerEmail");
+
+const ownerPassword =
+  document.getElementById("ownerPassword");
+
+const loginBtn =
+  document.getElementById("loginBtn");
+
+const logoutBtn =
+  document.getElementById("logoutBtn");
+
+const loginStatus =
+  document.getElementById("loginStatus");
+
+
+/* ==========================================
+   STATUS
+========================================== */
+
+function showStatus(message,ok=false){
+
+  statusEl.textContent =
+    message;
+
+  statusEl.style.color =
+    ok ? "#2e8b57" : "#c0392b";
+}
+
+
+/* ==========================================
+   RENDER COMMENTS
+========================================== */
+
+async function renderComments(rows){
+
+  commentsList.innerHTML = "";
+
+  if(!rows || rows.length === 0){
+
+    commentsList.innerHTML =
+      '<p class="muted">No comments yet. Be the first ❤️</p>';
+
+    return;
+  }
+
+  const {
+    data:{session}
+  } =
+    await supabaseClient.auth.getSession();
+
+  rows.forEach(function(row){
+
+    const item =
+      document.createElement("div");
+
+    item.className =
+      "comment-item";
+
+    const who =
+      document.createElement("div");
+
+    who.className =
+      "comment-name";
+
+    who.textContent =
+      row.Name || "Anonymous";
+
+    const text =
+      document.createElement("div");
+
+    text.className =
+      "comment-text";
+
+    text.textContent =
+      row.Comment || "";
+
+    item.appendChild(who);
+    item.appendChild(text);
+
+
+    if(session){
+
+      const deleteBtn =
+        document.createElement("button");
+
+      deleteBtn.textContent =
+        "🗑️ Delete";
+
+      deleteBtn.style.background =
+        "#c0392b";
+
+      deleteBtn.style.marginTop =
+        "8px";
+
+      deleteBtn.addEventListener(
+        "click",
+        async function(){
+
+          if(!confirm(
+            "Is comment ko delete karna hai?"
+          )){
+            return;
+          }
+
+          const {error} =
+            await supabaseClient
+              .from("Aromatic")
+              .delete()
+              .eq("Name",row.Name)
+              .eq("Comment",row.Comment)
+              .eq("created_at",row.created_at);
+
+          if(error){
+
+            showStatus(
+              "Delete nahi hua: " +
+              error.message
+            );
+
+            return;
+          }
+
+          await loadComments();
+
+        }
+      );
+
+      item.appendChild(deleteBtn);
+
+    }
+
+    commentsList.appendChild(item);
 
   });
 
+}
 
-  /* COMMENTS */
 
-  function loadComments(){
+/* ==========================================
+   LOAD COMMENTS
+========================================== */
 
-    const savedComments =
-      JSON.parse(localStorage.getItem("aromaticComments") || "[]");
+async function loadComments(){
 
-    commentsList.innerHTML = "";
+  const {data,error} =
+    await supabaseClient
+      .from("Aromatic")
+      .select("created_at, Name, Comment")
+      .order(
+        "created_at",
+        {
+          ascending:false
+        }
+      );
 
-    savedComments.forEach(function(item){
+  if(error){
 
-      const comment = document.createElement("div");
+    showStatus(
+      "Comments load nahi ho rahe: " +
+      error.message
+    );
 
-      comment.className = "comment-item";
-
-      const name = document.createElement("div");
-      name.className = "comment-name";
-      name.textContent = item.name;
-
-      const text = document.createElement("div");
-      text.className = "comment-text";
-      text.textContent = item.comment;
-
-      comment.appendChild(name);
-      comment.appendChild(text);
-
-      commentsList.appendChild(comment);
-
-    });
-
+    return;
   }
 
+  await renderComments(data);
+}
 
-  postButton.addEventListener("click", function(){
 
-    const name = nameInput.value.trim();
-    const comment = commentInput.value.trim();
+/* ==========================================
+   POST COMMENT
+========================================== */
+
+postBtn.addEventListener(
+  "click",
+  async function(){
+
+    const name =
+      nameInput.value.trim();
+
+    const comment =
+      commentInput.value.trim();
 
     if(!name){
-      alert("Please enter your name ❤️");
+
+      showStatus(
+        "Please apna naam likhein ❤️"
+      );
+
       nameInput.focus();
       return;
     }
 
     if(!comment){
-      alert("Please write a comment 💬");
+
+      showStatus(
+        "Please comment likhein 💬"
+      );
+
       commentInput.focus();
       return;
     }
 
-    const savedComments =
-      JSON.parse(localStorage.getItem("aromaticComments") || "[]");
+    postBtn.disabled = true;
 
-    savedComments.push({
-      name:name,
-      comment:comment
-    });
-
-    localStorage.setItem(
-      "aromaticComments",
-      JSON.stringify(savedComments)
+    showStatus(
+      "Comment post ho raha hai...",
+      true
     );
+
+    const {error} =
+      await supabaseClient
+        .from("Aromatic")
+        .insert([
+          {
+            Name:name,
+            Comment:comment
+          }
+        ]);
+
+    postBtn.disabled = false;
+
+    if(error){
+
+      showStatus(
+        "Comment post nahi hua: " +
+        error.message
+      );
+
+      return;
+    }
 
     nameInput.value = "";
     commentInput.value = "";
 
-    loadComments();
+    showStatus(
+      "Comment successfully post ho gaya ❤️",
+      true
+    );
+
+    await loadComments();
+
+  }
+);
+
+
+/* ==========================================
+   OWNER LOGIN
+========================================== */
+
+loginBtn.addEventListener(
+  "click",
+  async function(){
+
+    const email =
+      ownerEmail.value.trim();
+
+    const password =
+      ownerPassword.value;
+
+    if(!email || !password){
+
+      loginStatus.textContent =
+        "Email aur password dono likhein.";
+
+      return;
+    }
+
+    loginBtn.disabled = true;
+
+    const {error} =
+      await supabaseClient.auth.signInWithPassword({
+        email:email,
+        password:password
+      });
+
+    loginBtn.disabled = false;
+
+    if(error){
+
+      loginStatus.textContent =
+        "Login failed: " +
+        error.message;
+
+      return;
+    }
+
+    loginStatus.textContent =
+      "Owner login successful ❤️";
+
+    ownerEmail.style.display =
+      "none";
+
+    ownerPassword.style.display =
+      "none";
+
+    loginBtn.style.display =
+      "none";
+
+    logoutBtn.style.display =
+      "inline-block";
+
+    await loadComments();
+
+  }
+);
+
+
+/* ==========================================
+   OWNER LOGOUT
+========================================== */
+
+logoutBtn.addEventListener(
+  "click",
+  async function(){
+
+    await supabaseClient.auth.signOut();
+
+    ownerEmail.style.display =
+      "block";
+
+    ownerPassword.style.display =
+      "block";
+
+    loginBtn.style.display =
+      "inline-block";
+
+    logoutBtn.style.display =
+      "none";
+
+    loginStatus.textContent =
+      "Logged out.";
+
+    await loadComments();
+
+  }
+);
+
+
+/* ==========================================
+   LIKES
+========================================== */
+
+async function loadLikes(){
+
+  const {data,error} =
+    await supabaseClient
+      .from("likes")
+      .select("song");
+
+  if(error){
+
+    console.log(
+      "Likes load error:",
+      error
+    );
+
+    return;
+  }
+
+  document
+    .querySelectorAll(".like")
+    .forEach(function(button){
+
+      const song =
+        button.dataset.song;
+
+      const count =
+        data.filter(function(row){
+          return row.song === song;
+        }).length;
+
+      const countElement =
+        button.querySelector(".like-count");
+
+      if(countElement){
+        countElement.textContent =
+          count;
+      }
+
+    });
+
+}
+
+
+/* ==========================================
+   LIKE CLICK
+========================================== */
+
+document
+  .addEventListener(
+    "click",
+    async function(event){
+
+      const button =
+        event.target.closest(".like");
+
+      if(!button){
+        return;
+      }
+
+      if(button.dataset.processing === "true"){
+        return;
+      }
+
+      const song =
+        button.dataset.song;
+
+      button.dataset.processing =
+        "true";
+
+      button.disabled =
+        true;
+
+      const {error} =
+        await supabaseClient
+          .from("likes")
+          .insert([
+            {
+              song:song
+            }
+          ]);
+
+      button.disabled =
+        false;
+
+      button.dataset.processing =
+        "false";
+
+      if(error){
+
+        console.log(
+          "Like error:",
+          error
+        );
+
+        return;
+      }
+
+      button.classList.add("liked");
+
+      await loadLikes();
+
+    }
+  );
+
+
+/* ==========================================
+   AUDIO NOW PLAYING
+========================================== */
+
+document
+  .querySelectorAll("audio")
+  .forEach(function(audio){
+
+    audio.addEventListener(
+      "play",
+      function(){
+
+        document
+          .querySelectorAll("video")
+          .forEach(function(video){
+            video.pause();
+          });
+
+        const card =
+          audio.closest(".song-card");
+
+        const title =
+          card
+            ? card.querySelector("h2")
+            : null;
+
+        if(title){
+
+          document
+            .getElementById("nowPlayingTitle")
+            .textContent =
+              title.textContent.trim();
+
+          document
+            .getElementById("nowPlaying")
+            .classList.add("show");
+
+        }
+
+      }
+    );
 
   });
 
 
-  loadComments();
+/* ==========================================
+   VIDEO NOW PLAYING
+========================================== */
 
-});
+document
+  .querySelectorAll("video")
+  .forEach(function(video){
+
+    video.addEventListener(
+      "play",
+      function(){
+
+        document
+          .querySelectorAll("audio")
+          .forEach(function(audio){
+            audio.pause();
+          });
+
+        const card =
+          video.closest(".song-card");
+
+        const title =
+          card
+            ? card.querySelector("h2")
+            : null;
+
+        if(title){
+
+          document
+            .getElementById("nowPlayingTitle")
+            .textContent =
+              "🎬 " +
+              title.textContent.trim();
+
+          document
+            .getElementById("nowPlaying")
+            .classList.add("show");
+
+        }
+
+      }
+    );
+
+  });
+
+
+/* ==========================================
+   FLOATING MEMORIES
+========================================== */
+
+const floatingItems = [
+  "🌸",
+  "💖",
+  "✨",
+  "💕",
+  "🌷",
+  "💗",
+  "🎵"
+];
+
+function createMemoryFloat(){
+
+  const item =
+    document.createElement("div");
+
+  item.className =
+    "memory-float";
+
+  item.textContent =
+    floatingItems[
+      Math.floor(
+        Math.random() *
+        floatingItems.length
+      )
+    ];
+
+  item.style.left =
+    Math.random() * 100 + "vw";
+
+  item.style.animationDuration =
+    (5 + Math.random() * 4) + "s";
+
+  item.style.fontSize =
+    (18 + Math.random() * 12) + "px";
+
+  document.body.appendChild(item);
+
+  setTimeout(
+    function(){
+      item.remove();
+    },
+    9000
+  );
+
+}
+
+setInterval(
+  createMemoryFloat,
+  1400
+);
+
+
+/* ==========================================
+   INITIAL LOAD
+========================================== */
+
+loadComments();
+loadLikes();
+
 </script>
 
 </body>
