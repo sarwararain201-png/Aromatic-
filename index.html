@@ -942,7 +942,7 @@ button:active{
   }
 }
 </style>
-/* ===== PART 3 — SONGS & VIP STYLING ===== */
+   /* ===== PART 3 — SONGS & VVIP STYLING ===== */
 
 .song-card{
   position:relative;
@@ -982,21 +982,34 @@ button:active{
   0%,100%{
     transform:translateY(0) rotate(-5deg);
   }
+
   50%{
     transform:translateY(-5px) rotate(5deg);
   }
 }
 
 .cover-one{
-  background:linear-gradient(135deg,#ff7eb3,#9b7cff);
+  background:linear-gradient(
+    135deg,
+    #ff7eb3,
+    #9b7cff
+  );
 }
 
 .cover-two{
-  background:linear-gradient(135deg,#7b61ff,#c084fc);
+  background:linear-gradient(
+    135deg,
+    #7b61ff,
+    #c084fc
+  );
 }
 
 .cover-three{
-  background:linear-gradient(135deg,#ff6b8a,#ffb36b);
+  background:linear-gradient(
+    135deg,
+    #ff6b8a,
+    #ffb36b
+  );
 }
 
 /* ===== VVIP SONG CARD ===== */
@@ -1004,6 +1017,7 @@ button:active{
 .vip-song{
   position:relative;
   overflow:hidden;
+
   background:
     linear-gradient(
       135deg,
@@ -1037,7 +1051,6 @@ button:active{
   position:absolute;
   top:12px;
   right:12px;
-
   z-index:2;
 
   padding:5px 9px;
@@ -1080,7 +1093,8 @@ button:active{
 
   transform:rotate(25deg);
 
-  animation:vvipShine 5s ease-in-out infinite;
+  animation:
+    vvipShine 5s ease-in-out infinite;
 
   pointer-events:none;
 }
@@ -1182,11 +1196,14 @@ button:active{
 
 .like:hover,
 .comment:hover{
-  transform:translateY(-3px) scale(1.03);
+  transform:
+    translateY(-3px)
+    scale(1.03);
 }
 
 .like.liked{
-  animation:heartPop .35s ease;
+  animation:
+    heartPop .35s ease;
 }
 
 @keyframes heartPop{
@@ -1229,8 +1246,7 @@ button:active{
   .actions button{
     padding:10px 14px;
   }
-}
-/* ===== PART 4 — HERO, COMMENTS & MEMORY ===== */
+}/* ===== PART 4 — HERO, COMMENTS & MEMORY ===== */
 
 .hero{
   position:relative;
@@ -1405,7 +1421,9 @@ button:active{
 }
 
 .media-nav button:hover{
-  transform:translateY(-4px) scale(1.04) !important;
+  transform:
+    translateY(-4px)
+    scale(1.04) !important;
 }
 
 /* ===== SECTION TITLES ===== */
@@ -1615,26 +1633,16 @@ footer{
   .media-nav button{
     min-width:145px !important;
   }
-}
-/* ===== PART 5 — POLISH, ANIMATION & RESPONSIVE ===== */
+}/* =================================
+   PART 5 — POLISH & RESPONSIVE
+================================= */
 
-/* ===== GENERAL POLISH ===== */
-
-html{
-  scroll-behavior:smooth;
-}
-
-body{
-  overflow-x:hidden;
-}
-
-/* ===== SOFT FLOATING EFFECT ===== */
+/* SOFT FLOATING EFFECT */
 
 .hero,
 .memory-card,
 #commentBox{
-  animation:
-    softFloat 6s ease-in-out infinite;
+  animation:softFloat 6s ease-in-out infinite;
 }
 
 @keyframes softFloat{
@@ -1647,10 +1655,12 @@ body{
   }
 }
 
-/* ===== CARD HOVER POLISH ===== */
+
+/* CARD POLISH */
 
 .memory-card,
-.comment-item{
+.comment-item,
+.song-card{
   will-change:transform;
 }
 
@@ -1658,7 +1668,8 @@ body{
   transform:translateY(-5px) scale(1.01);
 }
 
-/* ===== BUTTON PRESS EFFECT ===== */
+
+/* BUTTON PRESS */
 
 button,
 .explore,
@@ -1669,17 +1680,19 @@ button,
 button:active,
 .explore:active,
 .post:active{
-  transform:scale(.97) !important;
+  transform:scale(.97)!important;
 }
 
-/* ===== INPUT PLACEHOLDER ===== */
+
+/* INPUT PLACEHOLDER */
 
 #commentBox input::placeholder,
 #commentBox textarea::placeholder{
   color:rgba(90,70,100,.52);
 }
 
-/* ===== COMMENT LIST ===== */
+
+/* COMMENT LIST */
 
 #comments{
   display:flex;
@@ -1687,7 +1700,8 @@ button:active,
   gap:12px;
 }
 
-/* ===== SCROLLBAR ===== */
+
+/* SCROLLBAR */
 
 ::-webkit-scrollbar{
   width:7px;
@@ -1703,27 +1717,22 @@ button:active,
     #ff7ab8,
     #8067df
   );
-
   border-radius:20px;
 }
 
-/* ===== SELECTION ===== */
+
+/* TEXT SELECTION */
 
 ::selection{
-  background:rgba(232,79,145,.18);
+  background:rgba(232,79,145,.22);
 }
 
-/* ===== FADE IN ===== */
 
-.hero,
+/* FADE IN */
+
 .media-nav,
-.memory-card,
-#commentBox,
 footer{
-  animation-name:fadeUp;
-  animation-duration:.8s;
-  animation-timing-function:ease;
-  animation-fill-mode:both;
+  animation:fadeUp .8s ease both;
 }
 
 @keyframes fadeUp{
@@ -1738,7 +1747,8 @@ footer{
   }
 }
 
-/* ===== MOBILE POLISH ===== */
+
+/* MOBILE POLISH */
 
 @media(max-width:520px){
 
@@ -1748,7 +1758,7 @@ footer{
   }
 
   .hero{
-    border-radius:24px !important;
+    border-radius:24px!important;
   }
 
   .hero h1{
@@ -1766,7 +1776,7 @@ footer{
   }
 
   #commentBox{
-    border-radius:22px !important;
+    border-radius:22px!important;
   }
 
   #commentBox input,
@@ -1776,7 +1786,7 @@ footer{
   }
 
   .memory-card{
-    border-radius:22px !important;
+    border-radius:22px!important;
   }
 
   footer{
@@ -1784,46 +1794,52 @@ footer{
   }
 }
 
-/* ===== REDUCE MOTION ===== */
+
+/* REDUCE MOTION */
 
 @media(prefers-reduced-motion:reduce){
 
   *,
   *::before,
   *::after{
-    animation-duration:.01ms !important;
-    animation-iteration-count:1 !important;
-    scroll-behavior:auto !important;
-    transition-duration:.01ms !important;
+    animation-duration:.01ms!important;
+    animation-iteration-count:1!important;
+    scroll-behavior:auto!important;
+    transition-duration:.01ms!important;
   }
-}
-/* ===== PART 6 — FINAL POLISH ===== */
+}/* =================================
+   PART 6 — FINAL VVIP POLISH
+================================= */
 
-/* ===== GLASS EFFECT ===== */
+/* GLASS EFFECT */
 
 .hero,
 #commentBox,
 .memory-card,
 .comment-item{
-  backdrop-filter:blur(10px);
-  -webkit-backdrop-filter:blur(10px);
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
 }
 
-/* ===== HEART DECORATION ===== */
+
+/* MEMORY HEART */
+
+.memory-card{
+  position:relative;
+  overflow:hidden;
+}
 
 .memory-card::before{
   content:"♥";
-
   position:absolute;
   right:18px;
   top:12px;
+  font-size:30px;
+  color:#e84f91;
+  opacity:.12;
+  pointer-events:none;
 
-  font-size:28px;
-
-  opacity:.10;
-
-  animation:
-    floatingHeart 3s ease-in-out infinite;
+  animation:floatingHeart 3s ease-in-out infinite;
 }
 
 @keyframes floatingHeart{
@@ -1836,11 +1852,11 @@ footer{
   }
 }
 
-/* ===== COMMENT ANIMATION ===== */
+
+/* COMMENT ANIMATION */
 
 .comment-item{
-  animation:
-    commentAppear .45s ease both;
+  animation:commentAppear .45s ease both;
 }
 
 @keyframes commentAppear{
@@ -1855,7 +1871,8 @@ footer{
   }
 }
 
-/* ===== FOCUS ACCESSIBILITY ===== */
+
+/* ACCESSIBILITY */
 
 button:focus-visible,
 input:focus-visible,
@@ -1864,20 +1881,23 @@ textarea:focus-visible{
   outline-offset:3px;
 }
 
-/* ===== IMAGE POLISH ===== */
+
+/* IMAGE SAFETY */
 
 img{
   max-width:100%;
   height:auto;
 }
 
-/* ===== LINK POLISH ===== */
+
+/* LINK SAFETY */
 
 a{
   -webkit-tap-highlight-color:transparent;
 }
 
-/* ===== FINAL MOBILE SAFETY ===== */
+
+/* FINAL MOBILE SAFETY */
 
 @media(max-width:520px){
 
@@ -1904,7 +1924,8 @@ a{
   }
 }
 
-/* ===== FINAL CLEANUP ===== */
+
+/* FINAL CLEANUP */
 
 *{
   box-sizing:border-box;
@@ -1912,4 +1933,4 @@ a{
 
 body{
   min-height:100vh;
-}
+}</style> 
