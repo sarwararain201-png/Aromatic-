@@ -1932,4 +1932,346 @@ a{
 
 body{
   min-height:100vh;
-}</style> 
+}</style>
+
+</head>
+
+</head>
+
+<body>
+
+<div class="wrap">
+
+  <!-- HERO -->
+  <section class="hero">
+
+    <div class="floating">🌸</div>
+
+    <h1>💖 Aromatic Memories 💖</h1>
+
+    <p class="tag">
+      Beautiful moments, favorite songs & precious memories ✨
+    </p>
+
+    <p class="welcome">
+      Welcome to my little world of memories, music and feelings. ❤️
+    </p>
+
+    <button class="explore" onclick="document.getElementById('media').scrollIntoView({behavior:'smooth'})">
+      ✨ Explore Memories ✨
+    </button>
+
+  </section>
+
+  <!-- MEDIA -->
+  <section class="card" id="media">
+
+    <h2 class="section-title">🎵 My Favorite Songs</h2>
+
+    <p class="muted">
+      Listen to the songs that hold special memories. 💕
+    </p>
+
+    <div class="media-nav">
+      <button type="button">🎵 Songs</button>
+      <button type="button">🎬 Memories</button>
+    </div>
+
+  </section>   <!-- SONGS -->
+
+  <section class="card song-card">
+
+    <div class="song">
+
+      <div class="cover cover-one">
+        <span>🎶</span>
+      </div>
+
+      <div>
+        <h2>Jab Hum Jawan Hongy</h2>
+        <div class="artist">❤️ A Special Memory</div>
+      </div>
+
+    </div>
+
+    <br>
+
+    <audio controls preload="none">
+      <source src="" type="audio/mpeg">
+      Your browser does not support audio.
+    </audio>
+
+    <div class="actions">
+      <button class="like" type="button" onclick="this.classList.toggle('liked')">
+        ❤️ Like
+      </button>
+
+      <button class="comment" type="button" onclick="document.getElementById('commentBox').scrollIntoView({behavior:'smooth'})">
+        💬 Comment
+      </button>
+    </div>
+
+  </section>
+
+
+  <section class="card song-card">
+
+    <div class="song">
+
+      <div class="cover cover-two">
+        <span>🎵</span>
+      </div>
+
+      <div>
+        <h2>Bichhran Bhi Zaroori Tha</h2>
+        <div class="artist">💜 A Heartfelt Memory</div>
+      </div>
+
+    </div>
+
+    <br>
+
+    <audio controls preload="none">
+      <source src="" type="audio/mpeg">
+      Your browser does not support audio.
+    </audio>
+
+    <div class="actions">
+      <button class="like" type="button" onclick="this.classList.toggle('liked')">
+        ❤️ Like
+      </button>
+
+      <button class="comment" type="button" onclick="document.getElementById('commentBox').scrollIntoView({behavior:'smooth'})">
+        💬 Comment
+      </button>
+    </div>
+
+  </section>
+
+
+  <section class="card song-card">
+
+    <div class="song">
+
+      <div class="cover cover-three">
+        <span>🎼</span>
+      </div>
+
+      <div>
+        <h2>Chal Kahen Chalen Sajna</h2>
+        <div class="artist">💗 Pyaar Yahan Karna Hai</div>
+      </div>
+
+    </div>
+
+    <br>
+
+    <audio controls preload="none">
+      <source src="" type="audio/mpeg">
+      Your browser does not support audio.
+    </audio>
+
+    <div class="actions">
+      <button class="like" type="button" onclick="this.classList.toggle('liked')">
+        ❤️ Like
+      </button>
+
+      <button class="comment" type="button" onclick="document.getElementById('commentBox').scrollIntoView({behavior:'smooth'})">
+        💬 Comment
+      </button>
+    </div>
+
+  </section>
+
+
+  <!-- VVIP MEMORY -->
+
+  <section class="card song-card vip-song">
+
+    <div class="song">
+
+      <div class="cover vip-cover">
+        <span>👑</span>
+      </div>
+
+      <div>
+        <h2>✨ VVIP Memory ✨</h2>
+        <div class="artist">Aromatic Memories</div>
+      </div>
+
+    </div>
+
+    <p class="muted">
+      Some memories are too precious to be ordinary. 💛
+    </p>
+
+  </section>
+  <!-- COMMENTS -->
+
+  <section class="card" id="commentBox">
+
+    <h2 class="section-title">💬 Share Your Memory</h2>
+
+    <p class="muted">
+      Leave a little message for Aromatic Memories. ❤️
+    </p>
+
+    <input
+      id="nameInput"
+      type="text"
+      placeholder="Your name"
+      maxlength="50"
+    >
+
+    <textarea
+      id="commentInput"
+      placeholder="Write your beautiful message..."
+      maxlength="500"
+      rows="5"
+    ></textarea>
+
+    <button class="post" id="postComment" type="button">
+      💖 Post Comment
+    </button>
+
+    <div id="commentsList"></div>
+
+  </section>
+
+
+  <!-- MEMORY -->
+
+  <section class="card memory-card">
+
+    <div class="memory-icon">💖</div>
+
+    <h2 class="section-title">Aromatic Memories</h2>
+
+    <p class="memory-text">
+      Every song has a story, every moment has a feeling,
+      and some memories stay with us forever. ✨
+    </p>
+
+    <p class="memory-text">
+      Keep smiling, keep loving, and keep making beautiful memories. 🌸
+    </p>
+
+  </section>
+
+
+  <!-- FOOTER -->
+
+  <footer>
+    Made with ❤️ for beautiful memories
+    <br>
+    © Aromatic Memories
+  </footer>
+</div>
+
+<script>
+/* ===== AROMATIC MEMORIES — BASIC FUNCTIONALITY ===== */
+
+document.addEventListener("DOMContentLoaded", function(){
+
+  const nameInput = document.getElementById("nameInput");
+  const commentInput = document.getElementById("commentInput");
+  const postButton = document.getElementById("postComment");
+  const commentsList = document.getElementById("commentsList");
+
+  /* LIKE BUTTONS */
+
+  document.querySelectorAll(".like").forEach(function(button){
+
+    button.addEventListener("click", function(){
+
+      this.classList.toggle("liked");
+
+      if(this.classList.contains("liked")){
+        this.innerHTML = "💖 Liked";
+      }else{
+        this.innerHTML = "❤️ Like";
+      }
+
+    });
+
+  });
+
+
+  /* COMMENTS */
+
+  function loadComments(){
+
+    const savedComments =
+      JSON.parse(localStorage.getItem("aromaticComments") || "[]");
+
+    commentsList.innerHTML = "";
+
+    savedComments.forEach(function(item){
+
+      const comment = document.createElement("div");
+
+      comment.className = "comment-item";
+
+      const name = document.createElement("div");
+      name.className = "comment-name";
+      name.textContent = item.name;
+
+      const text = document.createElement("div");
+      text.className = "comment-text";
+      text.textContent = item.comment;
+
+      comment.appendChild(name);
+      comment.appendChild(text);
+
+      commentsList.appendChild(comment);
+
+    });
+
+  }
+
+
+  postButton.addEventListener("click", function(){
+
+    const name = nameInput.value.trim();
+    const comment = commentInput.value.trim();
+
+    if(!name){
+      alert("Please enter your name ❤️");
+      nameInput.focus();
+      return;
+    }
+
+    if(!comment){
+      alert("Please write a comment 💬");
+      commentInput.focus();
+      return;
+    }
+
+    const savedComments =
+      JSON.parse(localStorage.getItem("aromaticComments") || "[]");
+
+    savedComments.push({
+      name:name,
+      comment:comment
+    });
+
+    localStorage.setItem(
+      "aromaticComments",
+      JSON.stringify(savedComments)
+    );
+
+    nameInput.value = "";
+    commentInput.value = "";
+
+    loadComments();
+
+  });
+
+
+  loadComments();
+
+});
+</script>
+
+</body>
+</html>
