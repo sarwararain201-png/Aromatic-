@@ -6,6 +6,35 @@
 <title>Aromatic Memories</title>
 
 <style>
+.memory-float{
+  position:fixed;
+  bottom:-50px;
+  z-index:9998;
+  pointer-events:none;
+  font-size:22px;
+  opacity:0;
+  animation:memoryFloat 7s linear forwards;
+}
+
+@keyframes memoryFloat{
+  0%{
+    transform:translateY(0) rotate(0deg) scale(.8);
+    opacity:0;
+  }
+
+  12%{
+    opacity:.75;
+  }
+
+  70%{
+    opacity:.55;
+  }
+
+  100%{
+    transform:translateY(-110vh) rotate(25deg) scale(1.15);
+    opacity:0;
+  }
+}
 *{box-sizing:border-box}
 
 html{
@@ -2126,6 +2155,32 @@ loadComments();
 loadLikes();
 
 </script>
+<script>
+const floatingItems = [
+  "🌸","💖","✨","💕","🌷","💗","🌹","💜","💎"
+];
 
+function createMemoryFloat(){
+  const item = document.createElement("div");
+
+  item.className = "memory-float";
+  item.textContent =
+    floatingItems[Math.floor(Math.random() * floatingItems.length)];
+
+  item.style.left = Math.random() * 100 + "vw";
+  item.style.animationDuration =
+    (5 + Math.random() * 4) + "s";
+  item.style.fontSize =
+    (18 + Math.random() * 14) + "px";
+
+  document.body.appendChild(item);
+
+  setTimeout(function(){
+    item.remove();
+  }, 9500);
+}
+
+setInterval(createMemoryFloat, 900);
+</script>
 </body>
 </html>
